@@ -11,24 +11,24 @@
 ## Python 2 and 3 ##
 
 # Unfortunately today there are two incompatible branches of Python language:
-# version 2.7 and versions 3.*. The very first thing you find is print
-# statement. In Python 2 print is literally a statement and should be used
+# version 2.7 and versions 3.*. The very first difference that you find is a
+# print statement. In Python 2 print is literally a statement and should be used
 # without parentheses:
 # >>> print 1
 # will print '1'. Nowadays you should use Python 3 where print is a function
-# (for now just believe it has a reason to be so):
+# (for now just believe there is a reason to be so):
 # >>> print(1)
 # will print '1'. If you must use Python 2 or you write a library that should
 # work on both 2 and 3 than you can use this "magic" line with __future__
 # statement:
 
-from __future__ import print_function, devision
+from __future__ import print_function, division
 
 # We will describe import system later. This line has no effect in Python 3 but
 # in Python 2 it sets behaviour of print statement to the same as in Python 3.
 # This line should be the first meaningful line in your file.
 
-# Now we can really print something:
+# Now we are ready to print something:
 print(1)  # Will print '1' without quotes
 
 # Let's test simple arithmetic operations:
@@ -52,12 +52,12 @@ print(1024 ** 128)
 
 ## Floats ##
 
-# There is built-in floating numbers (float for short):
+# There is built-in floating point numbers (float for short):
 print(1.23)
 # >>> 1.23
 print(1e-3)
 # >>> 0.001
-# Floats unlike integers have limits.
+# Floats have limits:
 print(1e200 * 1e200)
 # >>> inf
 
@@ -67,8 +67,8 @@ print(1e200 * 1e200)
 # division of two integers is always integer but in Python 3 it is always
 # float. "Magic" statement "from __future__ import division" above works in the
 # very same way as for print function described earlier and asks Python 2 to
-# work as Python 3. Use it always if your code can run with Python 2
-# interpretor.
+# work as Python 3. Use it always if your code can be run with Python 2
+# interpreter.
 
 # Let's look how division works
 print(1 / 2)
@@ -85,12 +85,23 @@ print(1 // 2)
 # >> 0
 print(4.0 // 2)
 # >> 2.0
-print(1.5 // 0.5)
+print(1.5 // 0.4)
 # >> 3.0
+
+# Operator "%" returns fractional part, return value is determined from the same
+# laws as for "//".
+print(1 % 2)
+# >> 1
+print(1.5 % 0.4)
+# >> 0.29999999999999993
+# Yes, Python has a common floating point arithmetic accuracy problem, see
+# Wikipedia for details
+# https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems
+
 
 ## Complex numbers ##
 
-# Python has a float complex type:
+# Python has a floating complex type:
 print(2 + 3j)
 # >>> (2+3j)
 # Where j is the imaginary unit modifier
@@ -144,3 +155,106 @@ print(type(1))
 # https://docs.python.org/library/functions.html
 
 
+### If-else and bool ###
+
+## If--elif-else ##
+
+# If statement is as simple as
+a = 4
+if a > 3:
+    print(a)
+else:
+    print(0)
+
+# Pay attention to colon and that blocks inside if-else statement are shifted. 
+
+if a < 0:
+    print(-a)
+else:
+    if a > 0:
+        print(a)
+    else:
+        print(0)
+
+# You can combine else: if: statements into one elif statement:
+if a < 0:
+    print(-a)
+elif a > 0:
+    print(a)
+else:
+    print(0)
+
+## Indentation ##
+
+# Indention is a part of Python language. You should always use one type of
+# indention: # spaces or tabs. Otherwise interpreter will fail with
+# IndentationError error. PEP 8 (style guide for Python code,
+# https://www.python.org/dev/peps/pep-0008/#indentation) recommends to use
+# 4 spaces per each indention level. I will try to follow PEP 8 in this course.
+
+# However sometimes indent means nothing
+a = (1
+     + 2
+    - 3j)
+print(a)
+# >>> (3-3j)
+
+## Boolean type variables and Boolean value of variables ##
+
+# At fact we have already met Boolean variables above inside if statement.
+print(1 > 0)
+# >>> True
+print(1 == 0)
+# >>> False
+a = 0.5
+print(a > 0 and a < 1)
+# >>> True
+# Is the same as
+print(0 < a < 1)
+# >>> True
+print(a < 0 or a > 1)
+# >>> False
+b = a < 0 or a > 1
+b = not b
+print(b)
+# >>> True
+
+# Each variable has Boolean value that used by if to decide what to do. You can
+# obtain this Boolean value by built-in bool function:
+print(bool(0+1j))
+# >>> True
+print(bool(0))
+# >>> False
+
+
+### While loop ###
+
+# While statement is as simple as if
+a = 0
+s = 0
+while a < 10:
+    s += a
+    a += 1
+print(s)
+# >>> 45
+
+## Continue and break statements ##
+
+# You can skip step of a loop using continue statement:
+a = 0
+s = 0
+while a < 10:
+    if a % 2 == 1:
+        continue
+    s += a
+    a += 1
+
+# You can exit infinite loop using break statement:
+a = 0
+s = 0
+while True:
+    s += a
+    a += 1
+    if s > 1024:
+        break
+# This is an artificial example but pay attention how to make infinite loop.
