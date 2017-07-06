@@ -1,5 +1,12 @@
 ### Python ###
-__pycache__
+
+# Byte-compiled
+__pycache__/
+
+# Distribution
+build/
+dist/
+*.egg-info/
 
 
 ### MacOs ###
