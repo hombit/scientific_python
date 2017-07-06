@@ -19,4 +19,18 @@ setup(
 #     install_reqs=parse_requirements('requirements.txt', session='hack'),
 #     scripts=['bin/script'],
 #     test_suite='scientific_python_sai.test.suite',
+    classifiers=[
+        'Intended Audience :: Education',
+        'License :: OSI Approved :: MIT License',
+        'Topic :: Education',
+
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+    ],
+    keywords='sample education',
 )
