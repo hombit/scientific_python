@@ -1,0 +1,23 @@
+### Python ###
+__pycache__
+
+
+### MacOs ###
+.DS_Store
+
+
+### KDE ###
+.directory
+
+
+### Vim ###
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+
+
+### IPythonNotebook ###
+.ipynb_checkpoints/
+
+
+### Idea ###
+.idea/
