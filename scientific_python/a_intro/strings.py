@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-# Make this file executable
-# $ chmod +x strings.py
-# Now you can start it just by name:
-# $ ./strings.py
-# Pay attention to write /usr/bin/env instead of a direct path to you python
-# interpreter. This path can vary from system to system and when virtualenv is
-# used.
 
+
+### Strings ###
+
+## Python 2 vs 3 ##
 
 from __future__ import division, print_function, unicode_literals
 
@@ -17,8 +14,13 @@ from __future__ import division, print_function, unicode_literals
 # in real life you can catch some troubles when grab ASCII data from files with
 # popular packages like pandas and numpy. Again, you should orient to Python 3
 # behaviour. In Python 2 importing unicode_literals from __future__ makes all
-# strings Unicode but it cannot solve all problems with data obtained from
-# old-fashion code. If you have to support Python 2 than have a look at six
-# module: https://pythonhosted.org/six/
+# strings in current file Unicode but it cannot solve all problems with data
+# obtained from old-fashion code. If you have to support Python 2 than have a
+# look at six module: https://pythonhosted.org/six/
 
+
+## str ##
+
+# str is a built-in type representing a sequences of Unicode characters (bytes
+# in Python 2).
 

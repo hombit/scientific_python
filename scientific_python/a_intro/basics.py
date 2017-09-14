@@ -14,10 +14,10 @@
 # version 2.7 and versions 3.*. The very first difference that you find is a
 # print statement. In Python 2 print is literally a statement and should be used
 # without parentheses:
-# >>> print 1
+# print 1
 # will print '1'. Nowadays you should use Python 3 where print is a function
 # (for now just believe there is a reason to be so):
-# >>> print(1)
+# print(1)
 # will print '1'. If you must use Python 2 or you write a library that should
 # work on both 2 and 3 than you can use this "magic" line with __future__
 # statement:
@@ -33,13 +33,13 @@ print(1)  # Will print '1' without quotes
 
 # Let's test simple arithmetic operations:
 print(1 + 2)
-# >>> 3
+# 3
 print(3 - 4)
-# >>> -1
+# -1
 print(3 * (-5))
-# >>> -15
+# -15
 print(2 ** 10)
-# >>> 1024
+# 1024
 
 
 ### Numbers ###
@@ -48,18 +48,18 @@ print(2 ** 10)
 
 # Python supports long integers
 print(1024 ** 128)
-# >>> 20815864389328798163850480654728171077230524494533409610638224700807216119346720596024478883464648369684843227908562015582767132496646929816279813211354641525848259018778440691546366699323167100945918841095379622423387354295096957733925002768876520583464697770622321657076833170056511209332449663781837603694136444406281042053396870977465916057756101739472373801429441421111406337458176
+# 20815864389328798163850480654728171077230524494533409610638224700807216119346720596024478883464648369684843227908562015582767132496646929816279813211354641525848259018778440691546366699323167100945918841095379622423387354295096957733925002768876520583464697770622321657076833170056511209332449663781837603694136444406281042053396870977465916057756101739472373801429441421111406337458176
 
 ## Floats ##
 
 # There is built-in floating point numbers (float for short):
 print(1.23)
-# >>> 1.23
+# 1.23
 print(1e-3)
-# >>> 0.001
+# 0.001
 # Floats have limits:
 print(1e200 * 1e200)
-# >>> inf
+# inf
 
 ## Division ##
 
@@ -72,28 +72,29 @@ print(1e200 * 1e200)
 
 # Let's look how division works
 print(1 / 2)
-# >> 0.5
+# 0.5
 print(4 / 2)
-# >> 2.0
+# 2.0
 print(1.5 / 0.5)
-# >> 3.0
+# 3.0
 
 # Operator "//" returns integer rounded to smaller value. It returns integer
 # typed value for a pair of integers and float typed value if at least one of
 # the value is float:
 print(1 // 2)
-# >> 0
+# 0
 print(4.0 // 2)
-# >> 2.0
+# 2.0
 print(1.5 // 0.4)
-# >> 3.0
+# 3.0
 
 # Operator "%" returns fractional part, return value is determined from the same
 # laws as for "//".
 print(1 % 2)
-# >> 1
+# 1
 print(1.5 % 0.4)
-# >> 0.29999999999999993
+# 0.29999999999999993
+
 # Yes, Python has a common floating point arithmetic accuracy problem, see
 # Wikipedia for details
 # https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems
@@ -103,11 +104,12 @@ print(1.5 % 0.4)
 
 # Python has a floating complex type:
 print(2 + 3j)
-# >>> (2+3j)
+# (2+3j)
+
 # Where j is the imaginary unit modifier
 
 
-### Variables and basic types ###
+### Variables and numerical types ###
 
 ## Dynamic type checking ##
 
@@ -116,10 +118,10 @@ print(2 + 3j)
 # first assignment
 a = 10
 print(a)
-# >>> 10
+# 10
 a = 10.0
 print(a)
-# >>> 10.0
+# 10.0
 
 ## Type conversions ##
 
@@ -127,11 +129,11 @@ print(a)
 a = 7
 b = complex(7)
 print(b)
-# >>> (7+0j)
+# (7+0j)
 a = 13.2
 b = int(a)
 print(b)
-# >>> 13
+# 13
 
 ## Attributes and methods ##
 
@@ -142,22 +144,22 @@ print(b)
 # the same as in a lot of other languages via "." separator.
 a = (-1)**(-0.5)
 print(a.imag)
-# >>> -1.0
+# -1.0
 print(a.conjugate().imag)
-# >>> 1.0
+# 1.0
 
 ## Type of the variable ##
 
 # Built-in function "type" returns object type
 print(type(1))
-# >>> <class 'int'>
+# <class 'int'>
 # Full list of built-in functions can be found on
 # https://docs.python.org/library/functions.html
 
 
 ### If-else and bool ###
 
-## If--elif-else ##
+## If-elif-else ##
 
 # If statement is as simple as
 a = 4
@@ -165,6 +167,7 @@ if a > 3:
     print(a)
 else:
     print(0)
+# 4
 
 # Pay attention to colon and that blocks inside if-else statement are shifted. 
 
@@ -175,6 +178,7 @@ else:
         print(a)
     else:
         print(0)
+# 4
 
 # You can combine else: if: statements into one elif statement:
 if a < 0:
@@ -183,48 +187,50 @@ elif a > 0:
     print(a)
 else:
     print(0)
+# 4
 
 ## Indentation ##
 
 # Indention is a part of Python language. You should always use one type of
 # indention: # spaces or tabs. Otherwise interpreter will fail with
 # IndentationError error. PEP 8 (style guide for Python code,
-# https://www.python.org/dev/peps/pep-0008/#indentation) recommends to use
-# 4 spaces per each indention level. I will try to follow PEP 8 in this course.
+# http://pep8.org/#indentation) recommends to use 4 spaces per each indention
+# level. I will try to follow PEP 8 in this course.
 
 # However sometimes indent means nothing
 a = (1
      + 2
     - 3j)
 print(a)
-# >>> (3-3j)
+# (3-3j)
 
 ## Boolean type variables and Boolean value of variables ##
 
 # At fact we have already met Boolean variables above inside if statement.
 print(1 > 0)
-# >>> True
+# True
 print(1 == 0)
-# >>> False
+# False
 a = 0.5
 print(a > 0 and a < 1)
-# >>> True
+# True
+
 # Is the same as
 print(0 < a < 1)
-# >>> True
+# True
 print(a < 0 or a > 1)
-# >>> False
+# False
 b = a < 0 or a > 1
 b = not b
 print(b)
-# >>> True
+# True
 
 # Each variable has Boolean value that used by if to decide what to do. You can
 # obtain this Boolean value by built-in bool function:
 print(bool(0+1j))
-# >>> True
+# True
 print(bool(0))
-# >>> False
+# False
 
 
 ### While loop ###
@@ -236,7 +242,7 @@ while a < 10:
     s += a
     a += 1
 print(s)
-# >>> 45
+# 45
 
 ## Continue and break statements ##
 
@@ -244,10 +250,12 @@ print(s)
 a = 0
 s = 0
 while a < 10:
+    a += 1
     if a % 2 == 1:
         continue
     s += a
-    a += 1
+print(a, s)
+# 10 30
 
 # You can exit infinite loop using break statement:
 a = 0
@@ -257,4 +265,6 @@ while True:
     a += 1
     if s > 1024:
         break
+print(s)
+# 1035
 # This is an artificial example but pay attention how to make infinite loop.
