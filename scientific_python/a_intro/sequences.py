@@ -155,11 +155,52 @@ except TypeError as e:
 
 ### tuple ###
 
-##
+## Basics ##
+
+t = (1, 2, 10+3j, 'hello')
+tt = t
+t += (1, 'world')
+print(t)
+# (1, 2, (10+3j), 'hello', -10, 'world')
+print(tt)
+# (1, 2, (10+3j), 'hello')
+print(t.count(1))
+# 2
+print(t.index(1))
+# 0
+
+## Unpack ##
+
+t = (1,2,3)
+a, b, c = t
+print(a, b)
+# 1 2
+a, b = b, a
+print(a, b)
+# 2 1
+
+# Use _ symbol to skip one of the values:
+a, _, b = t
+print(a, b)
+# 1 3
+
 
 
 ### dict ###
 
-# Construction #
+## Construction ##
+
 d = {0: 'zero', 2: 'two', 10: 'ten'}
-print()
+print(d)
+
+## Iterating ##
+
+# Iteration throw dictionary will yield its keys in "random" (implementation
+# -specific) order.
+for x in d:
+    print(x)
+# 0
+# 2
+# 10
+
+# 
