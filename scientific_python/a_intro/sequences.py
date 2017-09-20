@@ -514,7 +514,7 @@ print(s)
 ## Sorted list without duplicates ##
 
 a = [1, 0, 0, -1, 1, 0, 3, 1, 0, 5, 2]
-b = sorted(list(set(a)))
+b = sorted(set(a))
 print(b)
 # [-1, 0, 1, 2, 3, 5]
 
