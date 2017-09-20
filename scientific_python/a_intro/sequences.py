@@ -521,9 +521,10 @@ print(b)
 ## Count the most frequent element ##
 
 d = {}
+max_a_item = a[0]
 for x in a:
     d[x] = d.get(x, 0) + 1
-d = dict((v, k) for k, v in d.items())  # Revert dict
-max_element = d[max(d)]
-print(max_element)
+    if d[x] > d[max_a_item]:
+        max_a_item = x
+print(max_a_item)
 # 0
