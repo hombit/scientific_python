@@ -53,6 +53,7 @@ assert x + y == plus(x, y)
 # All positional arguments are required
 try:
     plus(x)
+    assert False
 except TypeError as e:
     assert str(e) == "plus() missing 1 required positional argument: 'y'"
     
@@ -135,6 +136,7 @@ assert ('key' in x) and ('one' in x)
 assert ('value' in x.values()) and (1 in x.values())
 try:
     packed_kwargs('hello')
+    assert False
 except TypeError as e:
     assert str(e) == "packed_kwargs() takes 0 positional arguments but 1 was given"
 

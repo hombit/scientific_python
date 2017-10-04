@@ -26,6 +26,7 @@ assert (1, 3) == next(enum)
 # enum is empty now
 try:
     next(enum)
+    assert False
 except StopIteration:
     pass
 
