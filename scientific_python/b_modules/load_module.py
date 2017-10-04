@@ -18,6 +18,8 @@ from simple_module import goodbye as good_bye
 assert sm.hello(name='Joe') == 'Hello Joe'
 assert good_bye(name='Mary') == 'Goodbye Mary'
 assert default_name == 'Anonymous'
+
+assert 'goodbye' not in sm.__all__
 try:
     goodbye(name='Mike')
     assert False
