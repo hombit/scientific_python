@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  jupyter:
+    build: ./jupyter/
+    volumes:
+      - work:/home/jovyan/work
+    restart: always  
+  
+  proxy:
+    build: ./proxy/
+    volumes:
+      - ssl:/etc/dhparams/
+      - ssl:/etc/letsencrypt
+      - work:/home/jovyan/work:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - TZ=Europe/Moscow
+      - LE_EMAIL=the@homb.it
+      - NGINX_HOST=sai.homb.it
+    depends_on:
+      - jupyter
+    restart: always  
+
+volumes:
+  ssl:
+  work:

@@ -18,7 +18,7 @@ setup(
 #     install_reqs=parse_requirements('requirements.txt', session='hack'),
     scripts=['bin/example'],
     package_data={
-        'scientific_python': ['jupyter_notebooks', 'doc'],
+        'scientific_python': ['misc', 'doc'],
     },
 #     test_suite='scientific_python.test.suite',
     classifiers=[
