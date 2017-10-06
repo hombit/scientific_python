@@ -16,8 +16,11 @@ setup(
     description='Package with materials for Scientific Python course for astronomers in Moscow University',
     packages=['scientific_python'],
 #     install_reqs=parse_requirements('requirements.txt', session='hack'),
-#     scripts=['bin/script'],
-#     test_suite='scientific_python_sai.test.suite',
+    scripts=['bin/example'],
+    package_data={
+        'scientific_python': ['jupyter_notebooks', 'doc'],
+    },
+#     test_suite='scientific_python.test.suite',
     classifiers=[
         'Intended Audience :: Education',
         'License :: OSI Approved :: MIT License',
