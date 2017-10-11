@@ -268,3 +268,19 @@ while True:
 print(s)
 # 1035
 # This is an artificial example but pay attention how to make infinite loop.
+
+## while and if-else together ##
+
+# If while-block (or for-in-block) ends with if-block than specific else-syntax
+# is allowed:
+a = 0
+while a < 10:
+    a += 1
+    b = a * 2
+    if b > 20:
+        print(b)
+else:
+    print(20)
+# 20
+
+# This syntax should be preferred to using boolean flag.
