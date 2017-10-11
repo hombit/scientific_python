@@ -412,8 +412,8 @@ print(d)
 # Hashable object must have specific __hash__() method that returns integer
 # number and such an object can be used as an argument of buil-in hash()
 # function that is works just like __hash__(). In general, all immutable
-# objects are hashable. So you can use number types, str and tuple as keys and
-# cannot use list and dict.
+# objects are hashable. So you can use number types, str and tuple (without
+# unhashable elements) as keys and cannot use list and dict.
 
 d = {}
 d[3 + 0j] = 'complex'
@@ -466,10 +466,10 @@ for k, v in d.items():
 
 ### set and frozenset ###
 
-# I have a very good definition for this type. set is a hash-set. You can think
-# that set is a dict without values: it can fast (O(n)) check if the element
-# presented, you can add and delete elements from it. As a dict set is
-# unordered, that means that iteration and popping elements orders are
+# I have a very good definition for this type: set is a hash-set.
+# You can think that set is a dict without values: it can fast (O(1)) check if
+# the element presented, you can add and delete elements from it. As a dict
+# set is unordered, that means that iteration and popping elements orders are
 # implementation specific. Set can hold only hashable elements.
 
 # Empty set
