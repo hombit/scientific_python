@@ -608,21 +608,31 @@ c.NotebookApp.port = 8000
 ## https://github.com/jbwhit/til/blob/master/jupyter/autosave_html_py.md
 import os
 from subprocess import check_call
+from queue import Queue
+from threading import Thread
 import nbformat
 from tempfile import TemporaryFile
 
-def post_save(model, os_path, contents_manager):
-    """post-save hook for converting notebooks to .py scripts"""
-    d, fname = os.path.split(os_path)
-    if model['type'] == 'notebook':
-        check_call(['jupyter', 'nbconvert', '--to', 'html', fname], cwd=d)
-#    elif model['type'] == 'file':
-#        rootname, ext = os.path.splitext(fname)
-#        if ext == '.py':
-#            with open(os_path, 'r') as fh:
-#                py = nbformat.read(fh, 'py')
-#            with TemporaryFile(suffix='.ipynb', dir=d) as fh:
-#                nbformat.write(py, fh, 'ipynb')
-#                check_call(['jupyter', 'nbconvert', '--to', 'html',  '--output={}'.format(rootname+'.html'), fh.name], cwd=d)
+class PostSave:
+    __queue = Queue()
+    
+    def __init__(self):
+        t = Thread(target=self.__worker)
+        t.start()
 
-c.FileContentsManager.post_save_hook = post_save
+    def __worker(self):
+        while True:
+            args, kwargs = self.__queue.get()
+            self.__convert(*args, **kwargs)
+            self.__queue.task_done()
+
+    @staticmethod
+    def __convert(model, os_path, contents_manager):
+        d, fname = os.path.split(os_path)
+        if model['type'] == 'notebook':
+            check_call(['jupyter', 'nbconvert', '--to', 'html', fname], cwd=d)
+
+    def __call__(self, *args, **kwargs):
+        self.__queue.put((args, kwargs))
+
+c.FileContentsManager.post_save_hook = PostSave()
