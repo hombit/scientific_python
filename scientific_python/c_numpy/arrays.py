@@ -235,7 +235,9 @@ for n in np.logspace(2, 6, 3, dtype=np.int):
         'setup': 'import numpy as np; a = np.zeros({}, dtype=np.int)'.format(n)
     }
     t_for = timeit(
-        'for i in range(a.shape[0]):\n    a[i] += 1',
+        """for i in range(a.shape[0]):
+            a[i] += 1
+        """,
         **kwargs
     )
     t_bench = timeit(
