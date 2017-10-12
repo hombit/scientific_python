@@ -77,6 +77,8 @@ assert 'pep' in my_simple_function.__doc__.lower()
 # Here lower() makes all characters have a lower case. Similarly upper() works.
 # One more method of these family is capitalize() that makes the first
 # character have upper case and other characters have lower case.
+# str has a lot of methods, use them all instead of write your own code:
+# https://docs.python.org/3/library/stdtypes.html#string-methods
 
 ## Raw strings ##
 
@@ -144,5 +146,8 @@ s = r'{symbol} = m \times c^{{2}}'.format(symbol='E')
 # because on Python prior 3.6 using of this prefix produces syntax error.
 from sys import version_info
 if version_info >= (3, 6):
-    from strings_f_prefix import f_prefix
+    if __package__:
+        from .strings_f_prefix import f_prefix
+    else:    
+        from strings_f_prefix import f_prefix
     f_prefix()

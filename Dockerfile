@@ -9,4 +9,4 @@ WORKDIR $PROJECT
 COPY . $PROJECT
 RUN python setup.py install
 
-CMD ["python", "bin/example"]
+CMD ["python", "bin/sci_py_example"]

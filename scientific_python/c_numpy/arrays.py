@@ -188,11 +188,11 @@ assert_array_equal(a, b)
 assert b.flags.owndata
 assert np.issubdtype(b.dtype, np.float)
 c = a[:]  # a view on all elements of `a`
-assert_array_equal(a, b, c)
+assert_array_equal(b, c)
 assert not c.flags.owndata
 d = a  # another variable that holds the same object as a
 assert a is d
-assert_array_equal(a, b, c, d)
+assert_array_equal(c, d)
 # all attributes of `d` is the same as for `a`, remember that they are the same
 # object:
 assert d.flags.owndata
@@ -202,7 +202,8 @@ a = np.arange(10)
 b = a
 a += 1
 assert a is b  # `a` still is the same object, compare with tuple/str behaviour
-assert_array_equal(a, b, np.arange(1, 11))
+assert_array_equal(a, b)
+assert_array_equal(b, np.arange(1, 11))
 
 # But "+", "-", "*", etc create new objects:
 a = np.arange(10)
@@ -217,7 +218,8 @@ a = np.arange(10)
 b = a
 a[:] = 1
 assert a is b
-assert_array_equal(a, b, 1)
+assert_array_equal(a, b)
+assert_array_equal(b, 1)
 
 a = np.ones(10)
 a[::2] = 0
@@ -277,7 +279,7 @@ c[:] = 0
 assert_array_equal(a, a_copy)  # original array hasn't changed
 # But indexing arrays can be used to change elements in-place:
 a[index] += 1
-assert not np.all(a, a_copy)  # a has been changed
+assert not np.all(a == a_copy)  # a has been changed
 # If indexing array has duplicate index then this index is changed only once
 a = np.zeros(2)
 a[[0,0,0,0]] += 1
