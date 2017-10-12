@@ -37,7 +37,7 @@ try:
     s[0] = 'h'  # str is immutable
 except TypeError as e:
     # Use of single quote inside double quotes:
-    assert str(e) == "'str' object does not support item assignment"
+    assert str(e).endswith("object does not support item assignment")
 set_with_str = {s}  # str is hashable
 assert s == set_with_str.pop()
 
