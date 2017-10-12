@@ -225,39 +225,21 @@ a = np.ones(10)
 a[::2] = 0
 assert_array_equal(a, np.arange(10) % 2)
 
-# Remember that for large arrays you should prefer in-place change of the
-# arrays because it is faster. Always, you should avoid to iterate ndarray
-# (e.g. in for-loop), because numpy bench operations over array's elements and
-# make them much faster together than one by one.
+# You should avoid to iterate ndarray (e.g. in for-loop), because numpy bench 
+# operations over array's elements and make them much faster together than one
+# by one.
 from timeit import timeit
-n = 1000000
-a = np.arange(n)
-kwargs = {
-    'number': 1000000000//n,
-    'setup': 'import numpy as np; a = np.zeros(n, dtype=np.int)',
-    'globals': {'n': n}
-}
-t_newobj  = timeit('a = a + 1', **kwargs)
-t_inplace = timeit('a += 1',    **kwargs)
-assert t_newobj > t_inplace  # This is true only for large arrays
-
-def plusone_for(a):
-    for i in np.ndindex(a.shape):
-        a[i] += 1
-def plusone_bench(a):
-    a += 1
-kwargs = {
-    'stmt': 'plusone(a)',
-    'number': 1,
-    'setup': 'import numpy as np; a = np.zeros(n, dtype=np.int)',
-}
 for n in np.logspace(2, 6, 3, dtype=np.int):
+    kwargs = {
+        'number': 10,
+        'setup': 'import numpy as np; a = np.zeros({}, dtype=np.int)'.format(n)
+    }
     t_for = timeit(
-        globals={'plusone': plusone_for, 'n': n},
+        'for i in range(a.shape[0]):\n    a[i] += 1',
         **kwargs
     )
     t_bench = timeit(
-        globals={'plusone': plusone_bench, 'n': n},
+        'a += 1',
         **kwargs
     )
     assert t_for > t_bench
