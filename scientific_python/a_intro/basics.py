@@ -142,7 +142,7 @@ print(b)
 # later. Now the only thing that we should now that classes and therefore
 # objects have attributes and methods (functions). Syntax of attribute access is
 # the same as in a lot of other languages via "." separator.
-a = (-1)**(-0.5)
+a = (-1 + 0j)**(-0.5)  # "+ 0j" is needed only in Python 2
 print(a.imag)
 # -1.0
 print(a.conjugate().imag)
