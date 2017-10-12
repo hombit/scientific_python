@@ -60,7 +60,8 @@ try:
     a[0] = 5 + 3j
     assert False
 except TypeError as e:
-    assert str(e) == "can't convert complex to int"
+    assert str(e).startswith("can't convert complex to")
+    # "... to int" in py3, "... to long" in py2
 
 ## Creation functions ##
 
