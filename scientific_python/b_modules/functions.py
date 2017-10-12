@@ -2,7 +2,6 @@
 
 from __future__ import division, print_function, unicode_literals
 
-
 ### Return ###
 
 def one():
@@ -55,7 +54,7 @@ try:
     plus(x)
     assert False
 except TypeError as e:
-    assert str(e) == "plus() missing 1 required positional argument: 'y'"
+    assert str(e).startswith('plus()')
     
 ## Keyword arguments ##
 
@@ -78,8 +77,10 @@ assert 'hello Joe' == hello(name='Joe')
 # Keyword argument can be called as positional one:
 assert 'hello Julia' == hello('Julia')
 
-def parallelogram_volume(a, b=1, c=1):
-    return a * b * c
+if __package__:
+    from .utils import parallelogram_volume
+else:
+    from utils import parallelogram_volume
 a, b, c = 1, 2, 3    
 assert a == parallelogram_volume(a)
 assert a * b == parallelogram_volume(a=a, b=b)
@@ -109,64 +110,19 @@ assert do_not_use_mutable_defaults() == [1, 1, 1]
 # be called as a function using operator "()") and create an instance of this
 # class.
 
-## Argument packing ##
 
-# "*" symbol before argument name (usually it is named args) means that
-# function takes any number of positional arguments and all of them are packed
-# into one tuple.
-def packed_args(*args):
-    return args
-assert packed_args(1) == (1,)
-assert isinstance(packed_args(1), tuple)
-assert len(packed_args(1)) == 1
-assert packed_args() == tuple()
-assert isinstance(packed_args(1, 2, 3), tuple)
-assert len(packed_args(1, 2, 3)) == 3
-assert (1, 2, 3) == packed_args(1, 2, 3)
+## Argument packing and unpacking ##
 
-# "**" before argument name (usually it is named kwargs — keyword arguments)
-# means that function takes any number of keyword arguments and all of them are
-# packed into one dict.
-def packed_kwargs(**kwargs):
-    return kwargs
-x = packed_kwargs(key='value', one=1)
-assert isinstance(x, dict)
-assert len(x) == 2
-assert ('key' in x) and ('one' in x)
-assert ('value' in x.values()) and (1 in x.values())
-try:
-    packed_kwargs('hello')
-    assert False
-except TypeError as e:
-    assert str(e) == "packed_kwargs() takes 0 positional arguments but 1 was given"
-
-# And all together now!
-def packed_args_kwargs(*args, **kwargs):
-    return len(args), len(kwargs)
-assert packed_args_kwargs(1, 2, 3, four=4, five=5) == (3, 2)
-
-def packed_and_non_packed(x, *args, key=None, **kwargs):
-    return len(args), len(kwargs)
-assert packed_and_non_packed(1) == (0, 0)
-assert packed_and_non_packed(1, 2, 3, four=4, five=5) == (2, 2)
-assert packed_and_non_packed(1, 2, 3, four=4, five=5, key='value') == (2, 2)
-
-## Arguments unpacking ##
-
-# In the same way positional and keyword arguments can be passed in as a parts
-# of iterable ordered variables and unpacked them inside the function.
-a, b, c = 2, 3, 4
-l = [a, b, c]
-t = (a, b, c)
-d = {'a': a, 'b': b, 'c': c}
-volume = a * b * c
-assert volume ==  parallelogram_volume(*l)
-assert volume ==  parallelogram_volume(*t)
-assert volume ==  parallelogram_volume(**d)
-assert volume ==  parallelogram_volume(a, *(b, c))
-assert volume ==  parallelogram_volume(a, **{'b': b, 'c': c})
-assert volume ==  parallelogram_volume(*[a], c=c, **{'b': b})
-assert volume ==  parallelogram_volume(a, *[b], c=c)
+# A lot of these examples are Python 3 specific so they are located in separate
+# module.
+from sys import version_info
+if version_info[0] >= 3:
+    if __package__:
+        from .functions_packing_unpacking import packing, unpacking
+    else:
+        from functions_packing_unpacking import packing, unpacking
+    packing()
+    unpacking()
 
 
 ## "lambda" statement ##
