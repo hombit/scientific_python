@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-from __future__ import division, print_function, unicode_literals
-
 from setuptools import find_packages, setup
 from pip.req import parse_requirements
 
