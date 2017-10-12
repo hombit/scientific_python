@@ -202,12 +202,12 @@ print(a, b)
 
 # More complex example:
 a = [1, 2, 3, [4, 5, 6]]
-b = a.copy()
+b = copy.copy(a)  # In Python 3 you can use a.copy() instead
 a[-1][0] = -100
 print(a, b)
 # [1, 2, 3, [-100, 5, 6]] [1, 2, 3, [-100, 5, 6]]
 
-# What happens? a.copy() is shallow and copied only members of `a`, while its
+# What happens? copy.copy(a) is shallow and copied only members of `a`, while its
 # last member is a reference to another list that has copied by reference not
 # by values of its members. If you want copy to be deep (recursive) and copy
 # all sub-members and sub-attributes of the object then you can use
@@ -226,14 +226,14 @@ a = [1, 2, 3]
 b = a
 print(a is b)
 # True
-b = a.copy()
+b = copy.copy(a)
 print(a is b)
 # False
 
 # Let's compare "is" with equality operator "==". "==" checks if all members
 # of one object equals to the members of another object:
 a = [1, 2, 3]
-b = a.copy()
+b = copy.copy(a)
 print(a == b, a is b)
 # True False
 print([] == [], [] is [])
