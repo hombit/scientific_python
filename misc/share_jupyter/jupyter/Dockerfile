@@ -2,6 +2,14 @@ FROM jupyter/minimal-notebook
 
 RUN conda install --yes astropy matplotlib numpy scipy pandas
 
+USER root
+RUN apt-get update && \
+    apt-get install -y texlive-lang-cyrillic dvipng && \
+    apt-get clean -y &&\
+    rm -rvf /var/lib/apt/lists/* &&\
+    truncate -s 0 /var/log/*log
+USER jovyan
+
 COPY jupyter_notebook_config.py $HOME/.jupyter/
 COPY custom.js $HOME/.jupyter/custom/
 USER root
