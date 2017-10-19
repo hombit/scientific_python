@@ -174,8 +174,8 @@ index = (1, Ellipsis)
 assert_array_equal(a[index], a[1,...])
 
 a.shape = 2, 8
-index = (0, slice(2,6,2))
-assert_array_equal(a[index], a[0,2:6:2])
+index = (0, slice(1,None,2))
+assert_array_equal(a[index], a[0,1::2])
 
 
 ## np.ndenumerate ##
