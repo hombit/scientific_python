@@ -22,10 +22,10 @@ a = list()
 # objects of the same type. List could be initialized using "[]" operator:
 a = [1, 2.3, 4.3, -1+3.5j]
 print(a)
-# [1, 2.3, 4.3]
+# [1, 2.3, 4.3, -1+3.5j]
 
-# Elements access works as expected, index for the first element is zero, and
-# for last element is -1
+# Element access works as expected, index for the first element is zero, and
+# for the last element is -1
 print(a[0], a[-1], a[-2], a[-3], a[-4])
 # 1 (-1+3.5j) 4.3 2.3 1
 a[-1] = 12
