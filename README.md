@@ -16,8 +16,8 @@ This repository has a structure of <a href="https://packaging.python.org/tutoria
  - [`bin`](./bin/) folder contains scripts that can be used only after package installation. Now they are used for testing only
  - [`doc`](./doc/) folder is used for documentation. Now it contains only MS Word file with course annotation (in Russian)
  - [`misc`](./misc/) contains two subfolders related to [`Juyter`](http://jupyter.org) notebooks used in class:
-   - [`jupyter_notebooks`](./jupyter_notebooks/) contains notebooks and other files used in class sorted by date
-   - [`share_jupyter`](./share_jupyter/) contains little [`Docker`](http://docker.com) project that runs my class `Jupyter`
+   - [`jupyter_notebooks`](./misc/jupyter_notebooks/) contains notebooks and other files used in class sorted by date
+   - [`share_jupyter`](./misc/share_jupyter/) contains little [`Docker`](http://docker.com) project that runs my class `Jupyter`
      server and exposes notebook `HTML` copies to the world on [sai.homb.it](http://sai.homb.it/)
  - [`setup.py`](./setup.py) is used to install this package
  - [`requirements.txt`](./requirements.txt) file contains Python dependicies of the project.
