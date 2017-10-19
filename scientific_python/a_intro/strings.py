@@ -31,7 +31,7 @@ from __future__ import division, print_function, unicode_literals
 # convenient to use quotes of the other type.
 s = 'Hello world'
 ss = "Hello world"
-assert s == ss
+assert s == ss  # raises AssertionError if boolean value is False
 assert s[:5] == 'Hello'
 try:
     s[0] = 'h'  # str is immutable
