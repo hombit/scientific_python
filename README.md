@@ -9,11 +9,12 @@ and asserts work.
 
 ## Repository structure
 
-This repository has a structure of <a href="https://packaging.python.org/tutorials/distributing-packages/">a Python package</a>:
+This repository has a structure of <a href="https://packaging.python.org/tutorials/distributing-packages/">a Python package</a> with some additional files:
  - [`scientific_python`](./scientific_python/) folder that represents top level package of the same name. This package contains
    several sub-packages and modules. You can start with [`a_intro`](./scientific_python/a_intro) sub-package and read its 
-   modules one by one in alfabetical order. All modules can be used as separate modules without package installation
- - [`bin`](./bin/) folder contains scripts that can be used only after package installation. Now they are used for testing only
+   modules one by one in alfabetical order. All modules can be used as separate modules and scripts without package
+   installation
+ - [`bin`](./bin/) folder contains scripts that can be used after package installation. Now they are used for testing
  - [`doc`](./doc/) folder is used for documentation. Now it contains only MS Word file with course annotation (in Russian)
  - [`misc`](./misc/) contains two subfolders related to [`Juyter`](http://jupyter.org) notebooks used in class:
    - [`jupyter_notebooks`](./misc/jupyter_notebooks/) contains notebooks and other files used in class sorted by date
@@ -27,6 +28,6 @@ This repository has a structure of <a href="https://packaging.python.org/tutoria
  - [`Dockerfile`](./Dockerfile) and [`docker-compose.yml`](./docker-compose.yml) files can be used to run the project into
    `Docker` container
  - [`.gitignore`](./.gitignore) and [`.gitattributes`](.gitattributes) are [`git`](https://git-scm.com) related files
- - [`.dockerignore`](./.dockerignore) is just a link to [`.gitignore`](./.gitignore)
+ - [`.dockerignore`](./.dockerignore) is a link to [`.gitignore`](./.gitignore)
  - [`.travis.yml`](./.travis.yml) is a [`Travis`](https://travis-ci.org) configuration file. `Travis` is a continius 
-   integration (CI) system that is used to test this project on various Python versions: 2.7 and 3.*
+   integration (CI) system used to test this project with various Python versions: 2.7 and 3.*
