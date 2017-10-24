@@ -74,7 +74,7 @@ a.insert(1, -500)
 print(a)
 # [1, -500, 2.3, 4.3, 12, 0]
 # Insert into on the penultimate index
-p.insert(-1, 100)
+a.insert(-1, 100)
 print(a)
 # [1, -500, 2.3, 4.3, 12, 100, 0]
 
