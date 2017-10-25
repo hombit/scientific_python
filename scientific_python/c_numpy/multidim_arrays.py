@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from __future__ import division, print_function, unicode_literals
+from __future__ import division
 
 import numpy as np
 from numpy.testing import assert_allclose, assert_array_equal
@@ -274,8 +274,8 @@ assert_array_equal(
 
 # Axis to concatenate along can be specified as a string:
 assert_array_equal(
-    np.r_['1', a.T, b.T, c.T],
-    np.concatenate((a.T,b.T,c.T), axis=1)
+    np.r_[b'1', a, b, c],
+    np.concatenate((a,b,c), axis=1)
 )
 
 ## np.stack ##
