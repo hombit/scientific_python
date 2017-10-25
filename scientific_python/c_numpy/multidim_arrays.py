@@ -274,7 +274,7 @@ assert_array_equal(
 
 # Axis to concatenate along can be specified as a string:
 assert_array_equal(
-    np.r_[b'1', a, b, c],
+    np.r_['1', a, b, c],
     np.concatenate((a,b,c), axis=1)
 )
 
