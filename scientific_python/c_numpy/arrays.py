@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from __future__ import division, print_function, unicode_literals
+from __future__ import division, print_function
 
 import numpy as np  # this is a common alias from numpy documentation
 from numpy.testing import assert_almost_equal, assert_array_equal

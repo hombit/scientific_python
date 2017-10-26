@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-from __future__ import division, print_function, unicode_literals
+from __future__ import division
 
 import numpy as np
-from numpy.testing import assert_almost_equal, assert_array_equal
+from numpy.testing import assert_allclose, assert_array_equal
 
 # This and another files in this subpackage are based on NumPy User Guide. The
 # guide is really good and you can prefer it to my modules:
@@ -177,6 +177,17 @@ a.shape = 2, 8
 index = (0, slice(1,None,2))
 assert_array_equal(a[index], a[0,1::2])
 
+# Use np.s_ and np.index_exp are so-called index tricks. `numpy` index tricks
+# are used as indexed objects but don't hold any data and acts similar to
+# functions. Examples from np.s_ documentation:
+assert np.s_[2::2] == slice(2, None, 2)
+assert np.s_[2::2,:] == (slice(2,None,2), slice(None))
+assert_array_equal(np.array([0, 1, 2, 3, 4])[np.s_[2::2]], [2,4])
+# The only difference is that np.index_exp always returns tuple:
+ie = np.index_exp[2::2]
+assert isinstance(ie, tuple)
+assert ie == (np.s_[2::2],)
+assert np.index_exp[2::2,:] == np.s_[2::2,:]
 
 ## np.ndenumerate ##
 
@@ -212,3 +223,125 @@ for i in range(shape[0]):
     for j in range(shape[1]):
         b.append([i,j])
 assert_array_equal(a, b)
+
+
+### Stacks and splits ###
+
+# Remember that ndarrays have constant size and every array join or split
+# copies data to the new object.
+
+a = np.arange(0, 4).reshape(2,2)
+b = np.arange(4, 8).reshape(2,2)
+c = np.arange(8,12).reshape(2,2)
+
+## np.concatenate ##
+# Stack over the first axis (vertical stack for 2-D array)
+v = np.concatenate((a,b,c))  # equivalent to deprecated np.vstack
+assert_array_equal(v, np.arange(12).reshape(6,2))
+# Stack over the second axis (horizontal stack for 2-D array)
+h = np.concatenate((a.T,b.T,c.T), axis=1)  # equivalent to deprecated np.hstack
+assert_array_equal(
+    h,
+    np.concatenate((
+        np.arange(0,12,2).reshape(1,-1),
+        np.arange(1,12,2).reshape(1,-1)
+    ))
+)
+
+## np.r_ ##
+
+# np.r_ is a so-called index trick: it provides ndarray creation interface
+# throw its index.
+# Default np.r_ behaviour is equal to np.concatenate(tuple, axis=0):
+assert_array_equal(
+    np.r_[a,b,c],
+    np.concatenate((a,b,c))
+)
+assert_array_equal(
+    np.r_[
+        0:10,           # range
+        0:1:5j,         # NB "j", it used to produce linspace instead of range
+        a.reshape(-1),  # ndarray
+        [3]*4           # list
+    ],
+    np.concatenate((
+        np.arange(0,10),
+        np.linspace(0,1,5),
+        a.reshape(-1),
+        np.full(4, 3)
+    ))
+)
+
+# Axis to concatenate along can be specified as a string:
+assert_array_equal(
+    np.r_['1', a, b, c],
+    np.concatenate((a,b,c), axis=1)
+)
+
+## np.stack ##
+
+# np.stack joins arrays throw new axis
+s = np.stack((a,b,c))
+assert s.shape == (3,2,2)
+assert_array_equal(
+    s,
+    np.r_[a,b,c].reshape(-1,2,2)
+)
+
+## np.column_stack ##
+
+# This function always produces 2-D array
+x = np.column_stack((np.zeros(5), np.arange(5)))
+assert x.shape == (5,2)
+x = np.column_stack(([[1,2,3],[3,2,1]], np.arange(6).reshape(2,-1)))
+assert x.shape == (2,6)
+
+## np.mgrid ##
+
+# np.mgrid is used to produce a stack of ndarrays with specified shape filled
+# by identical 1-D arrays stacked over different shapes. An example:
+grid = np.mgrid[0:2,0:3]
+assert grid.shape == (2,2,3)
+X, Y = grid
+assert_array_equal(
+    X,
+    [[0,0,0],[1,1,1]]
+)
+assert_array_equal(
+    Y,
+    [[0,1,2],[0,1,2]]
+)
+
+# 1-D mgrid is the same as np.r_:
+assert_array_equal(np.mgrid[0:10], np.r_[0:10])
+assert_array_equal(np.mgrid[0:2:5j], np.r_[0:2:5j])
+
+# mgrid is useful in work with n-D distributions or functions. For example,
+# 2-D normal distribution in square [-1..1]x[-1..1] can be produced in this
+# way:
+n = 11
+sl = np.s_[-1:1:n*1j]
+X, Y = np.mgrid[sl,sl]
+Z = np.exp(-(X**2+Y**2)/0.5)
+# Check distribution throw Ox and Oy axes and their bisector
+assert_allclose(Z[n//2,:], np.exp(-np.r_[sl]**2/0.5))
+assert_allclose(Z[:,n//2], Z[n//2,:])
+assert_allclose(
+    Z.diagonal(),
+    np.exp(-np.linspace(-np.sqrt(X[0,0]**2+Y[0,0]**2),
+                        np.sqrt(X[-1,-1]**2+Y[-1,-1]**2),
+                        n)**2 / 0.5
+    )
+)
+
+## np.split ##
+
+# np.split produces a list of a ndarray pieces
+
+v = np.concatenate((a,b,c))
+a1, b1, c1 = np.split(v,3)
+assert_array_equal(a,a1)
+assert_array_equal(b,b1)
+assert_array_equal(c,c1)
+
+# See also np.array_split

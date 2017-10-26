@@ -50,7 +50,7 @@ print(b)
 # [1, 4.3]
 a[::2] = [-1, -4.3]
 print(a)
-[-1, 2.3, -4.3, 12]
+# [-1, 2.3, -4.3, 12]
 
 ## Size of sequence ## 
 
@@ -72,12 +72,19 @@ print(a)
 # Add object -500 into index 1. Negative indices can be used
 a.insert(1, -500)
 print(a)
-# [1, -500, 2.3, 4.3, (-1+3.5j), 0]
+# [1, -500, 2.3, 4.3, 12, 0]
+# Insert into on the penultimate index
+a.insert(-1, 100)
+print(a)
+# [1, -500, 2.3, 4.3, 12, 100, 0]
 
 # Remove and return the last element
 x = a.pop()
 print(x, a)
-# 0 [-1, -500, 2.3, -4.3, 12]
+# 0 [-1, -500, 2.3, -4.3, 12, 100]
+x = a.pop()
+print(x, a)
+# 100 [-1, -500, 2.3, -4.3, 12]
 
 # Or any element by index
 x = a.pop(1)
