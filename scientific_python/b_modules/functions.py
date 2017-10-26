@@ -83,12 +83,15 @@ if __package__:
     from .utils import parallelogram_volume
 else:
     from utils import parallelogram_volume
-a, b, c = 1, 2, 3    
+a, b, c = 1, 2, 3
 assert a == parallelogram_volume(a)
 assert a * b == parallelogram_volume(a=a, b=b)
 assert a * b == parallelogram_volume(b=b, a=a)
 assert a * b * c == parallelogram_volume(a, b, c)
 assert a * b * c == parallelogram_volume(a, b, c=c)
+# Remember that keyword arguments as in function definition as in function call
+# should go after positional arguments. This is a WRONG syntax:
+# `parallelogram_volume(b=b,a)`.
 
 # You should never use mutable value as a default. Functions in Python are
 # objects and they hold there default values in the special attribute
