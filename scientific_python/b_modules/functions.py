@@ -2,6 +2,8 @@
 
 from __future__ import division, print_function, unicode_literals
 
+import copy
+
 ### Return ###
 
 def one():
@@ -108,7 +110,21 @@ assert do_not_use_mutable_defaults() == [1, 1, 1]
 # write class with varying attribute (instead of varying default of keyword
 # argument), implement __call__() method (then an object of your class can
 # be called as a function using operator "()") and create an instance of this
-# class.
+# class. A short example:
+class CallableWithMemory:
+    __used_arguments = []
+
+    def __call__(self, x):
+        self.__used_arguments.append(x)
+        # Return copied data to prevent modification of the attribute:
+        return copy.deepcopy(self.__used_arguments)
+
+callable_with_memory = CallableWithMemory()  # instance works as function
+assert callable_with_memory(1) == [1]
+assert callable_with_memory(2) == [1, 2]
+l = callable_with_memory([3,4,5])
+l[-1][-1] = -100  # object attribute hasn't changed!
+assert callable_with_memory('hello') == [1,2,[3,4,5],'hello']
 
 
 ## Argument packing and unpacking ##
