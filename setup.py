@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 from setuptools import find_packages, setup
-from pip.req import parse_requirements
 
+with open('requirements.txt') as f:
+    reqs = f.read().splitlines()
 
 setup(
     name='scientific_python',
@@ -13,7 +14,6 @@ setup(
     author_email='malanchev@physics.msu.ru',
     description='Package with materials for Scientific Python course for astronomers in Moscow University',
     packages=find_packages(),
-    install_reqs=parse_requirements('requirements.txt', session='hack'),
     scripts=['bin/sci_py_example', 'bin/sci_py_import_all'],
     package_data={
         'scientific_python': ['misc', 'doc'],
