@@ -1,1 +1,1 @@
-__all__ = ('integrate.py', 'interpolate.py')
+__all__ = ('integrate', 'interpolate')
