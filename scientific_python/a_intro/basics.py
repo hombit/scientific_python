@@ -22,7 +22,7 @@
 # work on both 2 and 3 than you can use this "magic" line with __future__
 # statement:
 
-from __future__ import print_function, division
+from __future__ import print_function, division  # has no effect in Python 3
 
 # We will describe import system later. This line has no effect in Python 3 but
 # in Python 2 it sets behaviour of print statement to the same as in Python 3.
