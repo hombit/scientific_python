@@ -3,7 +3,7 @@
 from __future__ import division, print_function
 
 import numpy as np  # this is a common alias from numpy documentation
-from numpy.testing import assert_almost_equal, assert_array_equal
+from numpy.testing import assert_allclose, assert_array_equal
 
 # `numpy` is a linear algebra library for python written primarily on C
 # https://numpy.org `numpy` is a part of SciPy ecosystem that includes other
@@ -73,16 +73,16 @@ assert_array_equal(np.arange(*sl), np.array(range(*sl)))
 
 # Instead of `range` `np.arange` accept float arguments:
 assert_array_equal(np.arange(3.5), np.array(range(4)))
-assert_almost_equal(np.arange(0, 1, 0.25), [0., 0.25, 0.5, 0.75])
+assert_allclose(np.arange(0, 1, 0.25), [0., 0.25, 0.5, 0.75])
 # However you should avoid to use `np.arange` with float steps, because of
 # floating point arithmetic accuracy problems. Use `np.linspace` instead:
-assert_almost_equal(np.arange(0, 1.1, 0.5), np.linspace(0, 1, 3))
+assert_allclose(np.arange(0, 1.1, 0.5), np.linspace(0, 1, 3))
 # `np.linspace(start, stop, num)` includes both `start` and `stop`, and always
 # has `num` elements.
 # `np.logspace(start, stop, num)` is a similar function that produces geometric
 # progression between `10**start` and `10**stop` numbers:
 sl = (0, 1, 10)
-assert_almost_equal(np.logspace(*sl), 10**np.linspace(*sl))
+assert_allclose(np.logspace(*sl), 10**np.linspace(*sl))
 
 # `np.empty` creates array with "random" elements of specified dtype:
 a = np.empty(10, dtype=np.float)
