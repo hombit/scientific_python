@@ -1,6 +1,7 @@
 FROM jupyter/minimal-notebook
 
-RUN conda install --yes astropy matplotlib numpy scipy pandas
+RUN conda install --yes astropy astroquery matplotlib numpy scipy pandas \
+    lmfit scikit-learn pillow scikit-image
 
 USER root
 RUN apt-get update && \
