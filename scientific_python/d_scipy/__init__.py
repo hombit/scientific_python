@@ -1,1 +1,1 @@
-__all__ = ('integrate', 'interpolate')
+__all__ = ('integrate', 'interpolate', 'optimize')

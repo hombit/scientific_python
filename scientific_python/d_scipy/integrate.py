@@ -39,11 +39,11 @@ assert_allclose(np.sqrt(np.pi), integral, rtol=0, atol=error)
 
 ## Harmonic oscillator ##
 
-# The problem is `d/dt(dx/ddt) + omega^2 x = 0, x(t=0) = 0, dx/dt(t=0)=1` with
+# The problem is $d/dt(dx/ddt) + omega^2 x = 0, x(t=0) = 0, dx/dt(t=0)=1$ with
 # the solution x = sin(omega t) / omega, dx/dt = cos(omega t).
-# Let's transform it too the ODE, than let `y[0]` is `x` and `y[1]` is `dx/dt`,
-# than `dy[0]/dt = y[1]` and `dy[1]/dt = -omega^2 y[0]`. In the vector form
-# `dy/dt = [y[1], -k y[0]]` with initial condition [0, 1].
+# Let's transform it too the ODE, than let `y[0]` is `x` and `y[1]` is $dx/dt$,
+# than $dy[0]/dt = y[1]$ and $dy[1]/dt = -omega^2 y[0]$. In the vector form
+# $dy/dt = [y[1], -k y[0]]$ with initial condition [0, 1].
 
 t = np.linspace(0., 1., 10)
 omega = 2*np.pi
