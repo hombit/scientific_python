@@ -9,26 +9,21 @@ import glob
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-with open(os.path.join(here, 'README.md')) as f:
-    long_description = f.read()
-
 with open(os.path.join(here, 'requirements.txt')) as f:
     install_requires=f.read().splitlines()
 
 setup(
     name='scientific_python',
-    version='0.1.0',
+    version='0.1.1',
     url='http://homb.it/sci_py/',
     license='MIT',
     author='Konstantin Malanchev',
     author_email='malanchev@physics.msu.ru',
     description='Package with materials for Scientific Python course for astronomers in Moscow University',
-    long_description=long_description,
     packages=find_packages(),
     scripts=['bin/sci_py_example', 'bin/sci_py_import_all'],
     data_files=[
-        ('doc',  ['doc/course_abstract.docx',]),
-        ('misc', glob.glob('misc/**/*', recursive=True)), 
+        ('doc',  ['doc/course_abstract.docx']),
     ],
     install_requires=install_requires,
 #     test_suite='scientific_python.test.suite',
