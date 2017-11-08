@@ -9,23 +9,5 @@ build/
 dist/
 *.egg-info/
 
-
-### MacOs ###
-.DS_Store
-
-
-### KDE ###
-.directory
-
-
-### Vim ###
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
-
-
-### IPythonNotebook ###
+### Jupyter ###
 .ipynb_checkpoints/
-
-
-### Idea ###
-.idea/

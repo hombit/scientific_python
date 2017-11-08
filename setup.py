@@ -1,23 +1,36 @@
 #!/usr/bin/env python3
 
-from setuptools import find_packages, setup
+# Read packaging and distributing tutorial:
+# https://packaging.python.org/tutorials/distributing-packages/
 
-with open('requirements.txt') as f:
-    reqs = f.read().splitlines()
+from setuptools import find_packages, setup
+import os
+import glob
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+with open(os.path.join(here, 'README.md')) as f:
+    long_description = f.read()
+
+with open(os.path.join(here, 'requirements.txt')) as f:
+    install_requires=f.read().splitlines()
 
 setup(
     name='scientific_python',
-    version='0.0.1',
-    url='https://xray.sai.msu.ru/~malanchev/',
+    version='0.1.0',
+    url='http://homb.it/sci_py/',
     license='MIT',
     author='Konstantin Malanchev',
     author_email='malanchev@physics.msu.ru',
     description='Package with materials for Scientific Python course for astronomers in Moscow University',
+    long_description=long_description,
     packages=find_packages(),
     scripts=['bin/sci_py_example', 'bin/sci_py_import_all'],
-    package_data={
-        'scientific_python': ['misc', 'doc'],
-    },
+    data_files=[
+        ('doc',  ['doc/course_abstract.docx',]),
+        ('misc', glob.glob('misc/**/*', recursive=True)), 
+    ],
+    install_requires=install_requires,
 #     test_suite='scientific_python.test.suite',
     classifiers=[
         'Intended Audience :: Education',
