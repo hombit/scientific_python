@@ -76,4 +76,4 @@ import doctest
 # Normally you should run doctests inside `if __name__ == '__main__'` block or 
 # via doctest.DocTestSuite. In this project for education reasons all code is 
 # run when importing.
-doctest.testmod()
+doctest.testmod(raise_on_error=True)
