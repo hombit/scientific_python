@@ -21,12 +21,14 @@ setup(
     author_email='malanchev@physics.msu.ru',
     description='Package with materials for Scientific Python course for astronomers in Moscow University',
     packages=find_packages(),
+    # If you have only one Python module use `py_modules` instead of `packages`:
+    # py_module = ['mymodule'],
     scripts=['bin/sci_py_example', 'bin/sci_py_import_all'],
     data_files=[
         ('doc',  ['doc/course_abstract.docx']),
     ],
     install_requires=install_requires,
-#     test_suite='scientific_python.test.suite',
+#     test_suite='scientific_python.e_testing.unittests.test_suite',
     classifiers=[
         'Intended Audience :: Education',
         'License :: OSI Approved :: MIT License',
