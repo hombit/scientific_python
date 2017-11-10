@@ -43,7 +43,7 @@ try:
     b = np.array([1,2,3,4], dtype=np.complex256)
     assert a.itemsize == 16
 except AttributeError as e:
-    assert str(e) == "'module 'numpy' has no attribute 'float128''"
+    assert str(e) == "module 'numpy' has no attribute 'float128'"
 
 ## Implicit type conversion ##
 a = np.array([1,2,3,4], dtype=np.int)
