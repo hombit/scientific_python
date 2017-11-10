@@ -31,7 +31,7 @@ class IsEvenTestCase(unittest.TestCase):
 
 # This function can be used in `setup.py` as `test_suite` keyword argument
 def test_suite():
-    suite = unittest.defaultTestLoader.loadTestsFromModule(__name__)
+    suite = unittest.defaultTestLoader.loadTestsFromName(__name__)
     return suite
 
 
