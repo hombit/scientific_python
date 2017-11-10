@@ -28,7 +28,7 @@ setup(
         ('doc',  ['doc/course_abstract.docx']),
     ],
     install_requires=install_requires,
-    test_suite='scientific_python.e_testing.unittests.test_suite',
+    test_suite='scientific_python.e_testing.doctests.test_suite',
     classifiers=[
         'Intended Audience :: Education',
         'License :: OSI Approved :: MIT License',
