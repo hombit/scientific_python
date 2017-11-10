@@ -56,7 +56,7 @@ import math
 
 
 def sqrt_sin(x):
-    """Return square root from sinus
+    """Returns square root from sinus
     
     Examples
     --------
@@ -72,8 +72,13 @@ def sqrt_sin(x):
     return math.sqrt(math.sin(x))
 
 
-import doctest
-# Normally you should run doctests inside `if __name__ == '__main__'` block or 
-# via doctest.DocTestSuite. In this project for education reasons all code is 
-# run when importing.
-doctest.testmod(raise_on_error=True)
+# This function can be used in `setup.py` as `test_suite` keyword argument
+def test_suite():
+    import doctest
+    suite = doctest.DocTestSuite(__name__)
+    return suite
+
+
+if __name__ == '__main__':  # checks if this file is executed as script
+    import doctest
+    doctest.testmod(raise_on_error=True)
