@@ -36,20 +36,14 @@ a = np.array([0,1,2,3,4], dtype=np.uint8)
 a[0] = -1
 # numpy numerical types are close related to C's types:
 assert a[0] == 255
-# Long types are available only on 64bit systems and float implementation is
-# system specific (just like in C):
-from sys import maxsize
-if maxsize > 2**32:  # 64 (or more) bits system
+# Long types are implemented on some 64bit systems:
+try:
     a = np.array([1,2,3,4], dtype=np.float128)
     assert a.itemsize == 16
     b = np.array([1,2,3,4], dtype=np.complex256)
     assert a.itemsize == 16
-else:
-    try:
-        dtype = np.float128
-        assert False
-    except AttributionError as e:
-        assert str(e) == "'module 'numpy' has no attribute 'float128''"
+except AttributionError as e:
+    assert str(e) == "'module 'numpy' has no attribute 'float128''"
 
 ## Implicit type conversion ##
 a = np.array([1,2,3,4], dtype=np.int)
