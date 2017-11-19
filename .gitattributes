@@ -1,5 +1,6 @@
 *.jpg binary
 *.png binary
 *.fits binary
+*.fit binary
 *.gz binary
 *.docx binary
