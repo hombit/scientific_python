@@ -22,9 +22,7 @@ This repository has a structure of [a Python package](https://packaging.python.o
  - [`setup.py`](./setup.py) is used to install this package
  - [`requirements.txt`](./requirements.txt) file contains Python dependencies of the project.
  - [`virtualenv_activation.sh`](./virtualenv_activation.sh) is a sample shell script (for \*nix systems only) that can be used to activate [`virtualenv`](https://virtualenv.pypa.io/) and install the package. Use it by typing `. virtualenv_activation.sh` or `source virtualenv_activation.sh`. For exit virtualenv type `deactivate`
- - [`Dockerfile`](./Dockerfile) and [`docker-compose.yml`](./docker-compose.yml) files can be used to run the project into
-   `Docker` container
- - [`.gitignore`](./.gitignore) and [`.gitattributes`](.gitattributes) are [`git`](https://git-scm.com) related files
- - [`.dockerignore`](./.dockerignore) is a link to [`.gitignore`](./.gitignore)
- - [`.travis.yml`](./.travis.yml) is a [`Travis`](https://travis-ci.org) configuration file. `Travis` is a continuous 
-   integration (CI) system used to test this project with various Python versions, 2.7 and 3.* are supported
+ - [`Dockerfile`](./Dockerfile) and [`docker-compose.yml`](./docker-compose.yml) files can be used to run the project inside [`Docker`](http://docker.com) container
+ - [`.gitignore`](./.gitignore) and [`.gitattributes`](.gitattributes) are [`git`](https://git-scm.com)  files
+ - [`.dockerignore`](./.dockerignore) is just a link to [`.gitignore`](./.gitignore), it used to prevent load garbage into Docker container
+ - [`.travis.yml`](./.travis.yml) is a [`Travis`](https://travis-ci.org) configuration file. `Travis` is a continuous integration (CI) system used to test this project with various Python versions, 2.7 and 3.\* are supported
