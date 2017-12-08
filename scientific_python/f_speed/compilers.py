@@ -10,17 +10,17 @@ timeit_kwargs= {
     'stmt' : 'contfrac(a)',
     'number': 10,
     'setup': """import numpy as np
-from {dot}contfrac import {func}_contfrac as contfrac
+from {pack}contfrac import {func}_contfrac as contfrac
 a = np.ones({n})""",
 }
 
 n = 1000000
-dot = '.' if __package__ else ''
+pack = __package__+'.' if __package__ else ''
 f_types = ['pure', 'numba', 'cython']
 time = {}
 for f in f_types:
     kwargs = copy(timeit_kwargs)
-    kwargs['setup'] = kwargs['setup'].format(func=f, dot=dot, n=n)
+    kwargs['setup'] = kwargs['setup'].format(func=f, pack=pack, n=n)
     time[f] = timeit(**kwargs)
 assert time['pure'] > time['numba']
 assert time['pure'] > time['cython']
