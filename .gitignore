@@ -11,3 +11,8 @@ dist/
 
 ### Jupyter ###
 .ipynb_checkpoints/
+
+
+### Cython ###
+*.c
+*.so
