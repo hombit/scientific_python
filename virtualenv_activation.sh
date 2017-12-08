@@ -17,5 +17,5 @@ if [ "${PYTHON_PATH/$ENV}" = "${PYTHON_PATH}" ]; then
     echo "Activation failed"
 else
     pip install -r requirements.txt
-    python setup.py install
+    python setup.py develop
 fi

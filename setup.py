@@ -3,9 +3,22 @@
 # Read packaging and distributing tutorial:
 # https://packaging.python.org/tutorials/distributing-packages/
 
-from setuptools import find_packages, setup
+from setuptools import find_packages, setup, Extension
 import os
 import glob
+
+packagename='scientific_python'
+
+try:
+    from Cython.Build import cythonize
+    import numpy as np
+    ext_modules = cythonize(Extension(
+        '*',
+        ['**/*.pyx'],
+        include_dirs=[np.get_include()])
+    )
+except ImportError:
+    ext_modules = []
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -13,8 +26,8 @@ with open(os.path.join(here, 'requirements.txt')) as f:
     install_requires=f.read().splitlines()
 
 setup(
-    name='scientific_python',
-    version='0.1.1',
+    name=packagename,
+    version='0.2.0',
     url='http://homb.it/sci_py/',
     license='MIT',
     author='Konstantin Malanchev',
@@ -24,6 +37,7 @@ setup(
     # If you have only one Python module use `py_modules` instead of `packages`:
     # py_module = ['mymodule'],
     scripts=['bin/sci_py_example', 'bin/sci_py_import_all'],
+    ext_modules=ext_modules,
     data_files=[
         ('doc',  ['doc/course_abstract.docx']),
     ],
