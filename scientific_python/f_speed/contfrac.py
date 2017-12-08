@@ -7,7 +7,7 @@ import numba
 
 
 if __package__:
-    from .contfrac import contfrac as cython_contfrac
+    from .cy_contfrac import contfrac as cython_contfrac
 else:
     import pyximport
     pyximport.install(setup_args={'include_dirs': [np.get_include()]})
