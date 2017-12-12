@@ -1,8 +1,11 @@
+# Base image for Jupyter
 FROM jupyter/minimal-notebook
 
+# Install required Python packages
 RUN conda install --yes astropy astroquery matplotlib numpy scipy pandas \
     lmfit scikit-learn pillow scikit-image requests photutils cython numba
 
+# Install TeX related Ubuntu packages
 USER root
 RUN apt-get update && \
     apt-get install -y texlive-lang-cyrillic dvipng && \
@@ -11,6 +14,7 @@ RUN apt-get update && \
     truncate -s 0 /var/log/*log
 USER jovyan
 
+# Copy configuration into image
 COPY jupyter_notebook_config.py $HOME/.jupyter/
 COPY custom.js $HOME/.jupyter/custom/
 USER root

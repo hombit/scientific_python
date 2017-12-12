@@ -9,7 +9,7 @@
 
 ENV=$HOME/.virtualenvs/scientific_python
 mkdir -vp $ENV
-virtualenv $ENV
+virtualenv $ENV  # for Python 3 use `python -m venv $ENV` instead
 source $ENV/bin/activate
 
 PYTHON_PATH=$(which python)

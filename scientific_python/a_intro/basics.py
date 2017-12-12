@@ -12,8 +12,8 @@
 
 # Unfortunately today there are two incompatible branches of Python language:
 # version 2.7 and versions 3.*. The very first difference that you find is a
-# print statement. In Python 2 print is literally a statement and should be used
-# without parentheses:
+# print statement. In Python 2 print is literally a statement and should be
+# used without parentheses:
 # print 1
 # will print '1'. Nowadays you should use Python 3 where print is a function
 # (for now just believe there is a reason to be so):
@@ -78,9 +78,9 @@ print(4 / 2)
 print(1.5 / 0.5)
 # 3.0
 
-# Operator "//" returns integer rounded to smaller value. It returns integer
-# typed value for a pair of integers and float typed value if at least one of
-# the value is float:
+# Operator "//" returns integer number rounded to smaller value. It returns
+# integer typed value for a pair of integers and float typed value if at least
+# one of the value is float:
 print(1 // 2)
 # 0
 print(4.0 // 2)
@@ -88,8 +88,8 @@ print(4.0 // 2)
 print(1.5 // 0.4)
 # 3.0
 
-# Operator "%" returns fractional part, return value is determined from the same
-# laws as for "//".
+# Operator "%" returns fractional part, returned value type is determined from
+# the same laws as for "//".
 print(1 % 2)
 # 1
 print(1.5 % 0.4)
@@ -113,9 +113,9 @@ print(2 + 3j)
 
 ## Dynamic type checking ##
 
-# Python is dynamic type checking language that means you don't need to declare
-# variable before assignment. Also you can change type of variable after the
-# first assignment
+# Python is a dynamic type checking language that means you don't need to
+# declare variable before assignment. Also you can change value and type of a
+# variable after the first assignment:
 a = 10
 print(a)
 # 10
@@ -123,9 +123,9 @@ a = 10.0
 print(a)
 # 10.0
 
-## Type conversions ##
+## Type conversion ##
 
-# You can convert variable from one type to another
+# You can convert value from one type to another
 a = 7
 b = complex(7)
 print(b)

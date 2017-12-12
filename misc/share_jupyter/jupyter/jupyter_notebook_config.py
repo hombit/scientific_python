@@ -635,4 +635,5 @@ class PostSave:
     def __call__(self, *args, **kwargs):
         self.__queue.put((args, kwargs))
 
+# Convert .ipynb files into .html after each save.
 c.FileContentsManager.post_save_hook = PostSave()

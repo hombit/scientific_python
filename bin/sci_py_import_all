@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+"""This script finds all modules in the package that can be imported by
+`from sub_package import *` and import them one by one.
+"""
+
 from __future__ import division, print_function, unicode_literals
 
 from importlib import import_module
