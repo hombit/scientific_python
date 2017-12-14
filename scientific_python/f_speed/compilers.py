@@ -6,6 +6,20 @@ from timeit import timeit
 from copy import copy
 
 
+if __package__:
+    from .erf import erf, erfc
+else:
+    import pyximport
+    pyximport.install()
+    from erf import erf, erfc
+
+
+assert erf(0) == 0
+assert erf(-float('inf')) == -1
+assert erfc(0) == 1
+assert_allclose(erf(1), 1 - erfc(1))
+
+
 timeit_kwargs= {
     'stmt' : 'contfrac(a)',
     'number': 10,
