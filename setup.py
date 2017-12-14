@@ -9,14 +9,20 @@ import glob
 
 packagename='scientific_python'
 
+# Cython related
 try:
     from Cython.Build import cythonize
     import numpy as np
-    ext_modules = cythonize(Extension(
-        '*',
-        ['**/*.pyx'],
-        include_dirs=[np.get_include()])
-    )
+    ext_modules = cythonize([
+        Extension(
+            'scientific_python.f_speed.cy_contfrac',
+            ['src/cy_contfrac.pyx'],
+            include_dirs=[np.get_include()]),
+        Extension(
+            'scientific_python.f_speed.erf',
+            ['src/erf.pyx'],
+            include_dirs=[np.get_include()]),
+    ])
 except ImportError:
     ext_modules = []
 
