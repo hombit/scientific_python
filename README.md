@@ -49,6 +49,7 @@ Date | Description | Materials | Video (in Russian)
 2017.11.24 | Dr. Ivan Zolotukhin tells about `Django` web framework, scientific web programming and model-template-view paradigm. | [Scripts](./misc/jupyter_notebooks/17.11.24/) | —
 2017.12.01 | Student [Nikita Utkin](https://github.com/GalacticCat) tells about `argparse`. Speed up Python script: why Python is slow, why to avoid loops and why we should know how Python works, `numba` as a simple way to speed up calculations. | [Scripts and notebook](./misc/jupyter_notebooks/17.12.01/), [`c_numpy.arrays`](./scientific_python/c_numpy/arrays.py#L223) | [link](https://www.youtube.com/watch?v=q73dwgkxsR8)
 2017.12.08 | Parallel execution of Python code. `threading` and its limitations due GIL. `multiprocessing` and its limitations due serialisation via `pickle`. | [Notebooks](./misc/jupyter_notebooks/17.12.08/) | [link](https://www.youtube.com/watch?v=Rz6c07SKnmI)
+2017.12.15 | Cython language and C-code usage with Python. | [Python, Cython and C code](./misc/jupyter_notebooks/17.12.15/), [`f_speed.compilers.*`](./scientific_python/e_testing) and [Cython/C files for this module](./src/), [`setup.py`](./setup.py) | [link](https://www.youtube.com/watch?v=cBSm9ag9eIg)
 
 
 # License
