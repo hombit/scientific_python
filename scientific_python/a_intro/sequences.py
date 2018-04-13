@@ -279,6 +279,7 @@ print(none == None)  # Not recommended
 
 # Empty tuple
 t = ()
+t = tuple()
 
 t = (1, 2, 10+3j, 1, 'hello')
 print(t.count(1))
@@ -294,17 +295,17 @@ print(t[-1])
 
 ## One element tuple ##
 
-# Be very careful when produce one element tuples. This is not a tuple:
+# Be very careful when produce one element tuples. This is NOT a tuple:
 a = (1)
 print(a, type(a))
 # 1 <class 'int'>
-# But this is a tuple:
+# But this IS a tuple:
 a = (1,)
-print(a, tuple(a))
+print(a, type(a))
 # (1,) <class 'tuple'>
 # I strongly recommend to use trailing comma in every place you are afraid to
 # make a mistake like this. In the modern Python trailing comma is valid in
-# almost every place you will want to use it.
+# almost every place you may want to use it.
 
 ## Mutability ##
 
@@ -349,7 +350,7 @@ print(a, b)
 ## Return numerical values from functions ##
 
 # Going ahead let me say that returning numerical values from the function will
-# produce tuple:
+# produce a tuple:
 def f():
     return 1, 2
 x = f()
@@ -380,7 +381,7 @@ d[12] = 'twelve'
 print(12 in d)
 # True
 
-# Access to absent key will produce exception
+# Access to absent key produces exception
 try:
     print(d[500])
 except KeyError as e:
@@ -392,7 +393,7 @@ except KeyError as e:
 print(d.get(500, 'Unknown value'))
 # Unknown value
 
-# get() without second argument will return None, e.g. the default value of
+# get() without second argument will return None, i.e. the default value of
 # the second argument of get() is None
 print(d.get(500))
 # None
@@ -416,9 +417,9 @@ print(d)
 ## Hashable variables ##
 
 # Note that not any element can be a key of a dict, but only hashable objects.
-# Hashable object must have specific __hash__() method that returns integer
-# number and such an object can be used as an argument of buil-in hash()
-# function that is works just like __hash__(). In general, all immutable
+# Hashable object must have specific __hash__() method that returns integral
+# number, and such an object can be used as an argument of buil-in hash()
+# function that works just like __hash__(). In general, all immutable
 # objects are hashable. So you can use number types, str and tuple (without
 # unhashable elements) as keys and cannot use list and dict.
 
@@ -436,8 +437,8 @@ except TypeError as e:
 
 d = {0: 'zero', 2: 'two', 10: 'ten'}
 
-# Iteration throw dictionary will yield its keys in "random" (implementation
-# -specific) order. This equivalent to `for k in d.keys()`:
+# Iteration over dictionary yields its keys in "random" (implementation-
+# specific) order. This equivalent to `for k in d.keys()`:
 for k in d:
     print(k)
 # 0
@@ -473,9 +474,9 @@ for k, v in d.items():
 
 ### set and frozenset ###
 
-# I have a very good definition for this type: set is a hash-set.
+# I have a very good definition for this type: set is a hash-set =).
 # You can think that set is a dict without values: it can fast (O(1)) check if
-# the element presented, you can add and delete elements from it. As a dict
+# the element presents, you can add and delete elements from it. As a dict
 # set is unordered, that means that iteration and popping elements orders are
 # implementation specific. Set can hold only hashable elements.
 
@@ -490,7 +491,7 @@ print(s)
 
 print(s.pop(), s.pop())
 # 30 1
-# Order is implementation specific
+# Order can differ
 
 s = set(range(5))
 s.discard(3)
@@ -516,7 +517,7 @@ print(s)
 
 ### Examples ###
 
-# I try to keep examples clean but may be not fast
+# I try to keep examples clean, so they can be unoptimized and slow
 
 ## Sorted list without duplicates ##
 
