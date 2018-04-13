@@ -214,7 +214,7 @@ c.NotebookApp.base_url = '/jupyter/'
 #    from notebook.auth import passwd; passwd()
 #  
 #  The string should be of the form type:salt:hashed-password.
-c.NotebookApp.password = 'sha1:dc0a4d67529e:e7d84cf27ee2275c9053e1e7f606faef249a90d5'
+c.NotebookApp.password = 'sha1:6c1a5cca33dc:30f31ede1973570aa5e471d9d5537852a5f9386b'
 
 ## Forces users to use a password for the Notebook server. This is useful in a
 #  multi user environment, for instance when everybody in the LAN can access each

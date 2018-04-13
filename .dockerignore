@@ -1,1 +1,18 @@
-.gitignore
+### Python ###
+
+# Byte-compiled
+__pycache__/
+*.pyc
+
+# Distribution
+build/
+dist/
+*.egg-info/
+
+### Jupyter ###
+.ipynb_checkpoints/
+
+
+### Cython ###
+*.c
+*.so
