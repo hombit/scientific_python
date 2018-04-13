@@ -41,7 +41,7 @@ setup(
     description='Package with materials for Scientific Python course for astronomers in Moscow University',
     packages=find_packages(),
     # If you have only one Python module use `py_modules` instead of `packages`:
-    # py_module = ['mymodule'],
+    # py_modules=['mymodule'],
     scripts=['bin/sci_py_example', 'bin/sci_py_import_all'],
     ext_modules=ext_modules,  # for Cython
     data_files=[
