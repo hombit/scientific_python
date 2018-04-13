@@ -200,9 +200,11 @@ print(a, b)
 # To copy list with its values use copy() method or module `copy` of standard
 # library
 a = [1, 2, 3]
-# We can use import in the any part of the code. Exception is import __future__
+# We can use import in the any part of the code. Exception is `from __future__
+# import ...`. The good style is import all stuff in the beginning of the file
+# or function
 import copy
-b = copy.copy(a)  # or just a.copy()
+b = copy.copy(a)  # or just a.copy() in Python 3
 a[0] = -1
 print(a, b)
 # [-1, 2, 3] [1, 2, 3]
@@ -256,13 +258,14 @@ print(511 is 511, a is 511, -100 is -100)
 
 ## None ##
 
-# None is a special built-in object. It is used when you need to return "empty" # value from the function or send it as function argument. Usually None uses as
-# default value of optional argument of function (see dict.get() bellow). It is
-# an only object of NoneType, its Boolean value is False and every variable
-# that holds None refers to this object. If function doesn't have "return"
-# statement or it is empty then it returns None.
-# You can check that your variable is None in several ways, but using of "is"
-# and "is not" statements are recommended (see PEP 8, http://pep8.org).
+# None is a special built-in object. It is used when you need to return "empty"
+# value from the function or send it as function argument. Usually None is used
+# as default value of optional argument of function (see, e.g. dict.get()
+# bellow). It is an only object of NoneType, its Boolean value is False and
+# every variable that holds None refers to this object. If function doesn't
+# have `return` statement or nothing is written after `return` then it returns
+# None. You can check that your variable is None in several ways, but `is` and
+# `is not` statements are recommended (see PEP 8, http://pep8.org).
 none = None
 print(none is None)  # Recommended
 # True
