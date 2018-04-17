@@ -478,10 +478,11 @@ for k, v in d.items():
 ### set and frozenset ###
 
 # I have a very good definition for this type: set is a hash-set =).
-# You can think that set is a dictionary without values: it can fast (O(1)) check if
-# the element presents, you can add and delete elements from it. As a dictionary
-# set is unordered, it means that iteration and popping elements orders are
-# implementation specific. Set can hold only hashable elements.
+# You can think that set is a dictionary without values: it can fast (O(1))
+# check if the element presents, you can add and delete elements from it.
+# As a dictionary set is unordered, it means that iteration and popping
+# elements orders are implementation specific. Set can hold only hashable
+# elements.
 
 # Empty set
 s = set()
