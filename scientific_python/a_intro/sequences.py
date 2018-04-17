@@ -20,7 +20,7 @@ a = list()
 
 # list is a collection of various elements that could be and could be not
 # objects of the same type. List could be initialized using "[]" operator:
-a = [1, 2.3, 4.3, -1+3.5j]
+a = [1, 2.3, 4.3, -1 + 3.5j]
 print(a)
 # [1, 2.3, 4.3, -1+3.5j]
 
@@ -283,7 +283,7 @@ print(none == None)  # Not recommended
 t = ()
 t = tuple()
 
-t = (1, 2, 10+3j, 1, 'hello')
+t = (1, 2, 10 + 3j, 1, 'hello')
 print(t.count(1))
 # 2
 print(t.index(1))
@@ -314,7 +314,7 @@ print(a, type(a))
 # Tuples are immutable objects. It means that you cannot change their size,
 # replace or add elements. NB that even operator "+=" will produce new object,
 # not update current:
-t = (1, 2, 10+3j, 1, 'hello')
+t = (1, 2, 10 + 3j, 1, 'hello')
 tt = t
 t += (-10, 'world')
 print(t)

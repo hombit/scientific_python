@@ -11,3 +11,4 @@ install:
 script:
   - sci_py_import_all
   - python setup.py test
+  - sci_py_test_style .

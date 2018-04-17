@@ -1,0 +1,55 @@
+#!/usr/bin/env python
+
+import glob
+import os
+from itertools import chain
+from sys import argv
+
+import pycodestyle
+
+
+EXTS = ('.py', '.pyx')
+SKIP_ERRORS = {'a_intro/sequences.py': ('E402', 'E711', 'E712')}
+SCRIPTS = ('sci_py_example', 'sci_py_import_all', 'sci_py_test_style')
+
+
+def check_style(fpath):
+    for exception_path, errors in SKIP_ERRORS.items():
+        if fpath.endswith(exception_path):
+            style = pycodestyle.StyleGuide(ignore=errors)
+            break
+    else:
+        style = pycodestyle.StyleGuide()
+    return style.check_files([fpath])
+
+
+if __name__ == '__main__':
+    dir_name = argv[1]
+    script_dir = os.path.join(dir_name, 'bin')
+    package_dir = os.path.join(dir_name, 'scientific_python')
+
+    fpaths = [os.path.join(script_dir, script) for script in SCRIPTS]
+    fpaths += list(chain.from_iterable(
+        (glob.glob(os.path.join(package_dir, '**/*'+ext)) for ext in EXTS)
+    ))
+
+    results = dict(filter(lambda x: x[1].total_errors != 0,
+                          ((fpath, check_style(fpath)) for fpath in fpaths)))
+
+    if len(results) > 0:
+        errors_per_file = (
+            (fpath, '\n'.join(r.get_statistics()))
+            for fpath, r in results.items()
+        )
+        errors = '\n'.join(
+            ('    {}:\n{}'.format(fpath, errors)
+             for fpath, errors in errors_per_file)
+        )
+        msg = 'Style checker has found error{s}:\n{errors}'.format(
+            s='s'*bool(len(results) != 1),
+            errors=errors
+        )
+        print(msg)
+        RuntimeError(msg)
+    else:
+        print("Style check hasn't found any errors")

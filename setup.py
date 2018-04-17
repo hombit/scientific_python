@@ -42,7 +42,7 @@ setup(
     packages=find_packages(),
     # If you have only one Python module use `py_modules` instead of `packages`:
     # py_modules=['mymodule'],
-    scripts=['bin/sci_py_example', 'bin/sci_py_import_all'],
+    scripts=['bin/sci_py_example', 'bin/sci_py_import_all', 'bin/sci_py_test_style'],
     ext_modules=ext_modules,  # for Cython
     data_files=[
         ('doc',  ['doc/course_abstract.docx']),
