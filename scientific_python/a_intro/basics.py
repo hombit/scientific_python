@@ -6,9 +6,9 @@
 # As you see "#" is used for comments.
 
 
-### Print ###
+# -- Print --
 
-## Python 2 and 3 ##
+# - Python 2 and 3 -
 
 # Unfortunately today there are two incompatible branches of Python language:
 # version 2.7 and versions 3.*. The very first difference that you find is a
@@ -42,15 +42,15 @@ print(2 ** 10)
 # 1024
 
 
-### Numbers ###
+# -- Numbers --
 
-## Integers ##
+# - Integers -
 
 # Python supports long integers
 print(1024 ** 128)
 # 20815864389328798163850480654728171077230524494533409610638224700807216119346720596024478883464648369684843227908562015582767132496646929816279813211354641525848259018778440691546366699323167100945918841095379622423387354295096957733925002768876520583464697770622321657076833170056511209332449663781837603694136444406281042053396870977465916057756101739472373801429441421111406337458176
 
-## Floats ##
+# - Floats -
 
 # There is built-in floating point numbers (float for short):
 print(1.23)
@@ -61,7 +61,7 @@ print(1e-3)
 print(1e200 * 1e200)
 # inf
 
-## Division ##
+# - Division -
 
 # Division (operator "/") works different in Python 2 and 3. In Python 2
 # division of two integers is always integer but in Python 3 it is always
@@ -100,7 +100,7 @@ print(1.5 % 0.4)
 # https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems
 
 
-## Complex numbers ##
+# - Complex numbers -
 
 # Python has a floating complex type:
 print(2 + 3j)
@@ -109,9 +109,9 @@ print(2 + 3j)
 # Where j is the imaginary unit modifier
 
 
-### Variables and numerical types ###
+# -- Variables and numerical types --
 
-## Dynamic type checking ##
+# - Dynamic type checking -
 
 # Python is a dynamic type checking language that means you don't need to
 # declare variable before assignment. Also you can change value and type of a
@@ -123,7 +123,7 @@ a = 10.0
 print(a)
 # 10.0
 
-## Type conversion ##
+# - Type conversion -
 
 # You can convert value from one type to another
 a = 7
@@ -135,20 +135,20 @@ b = int(a)
 print(b)
 # 13
 
-## Attributes and methods ##
+# - Attributes and methods -
 
 # Python is an object oriented language and each variable is represented by an
 # object of some type (class). We will describe how to create our own classes
 # later. Now the only thing that we should now that classes and therefore
-# objects have attributes and methods (functions). Syntax of attribute access is
-# the same as in a lot of other languages via "." separator.
+# objects have attributes and methods (functions). Syntax of attribute access
+# is the same as in a lot of other languages via "." separator.
 a = (-1 + 0j)**(-0.5)  # "+ 0j" is needed only in Python 2
 print(a.imag)
 # -1.0
 print(a.conjugate().imag)
 # 1.0
 
-## Type of the variable ##
+# - Type of the variable -
 
 # Built-in function "type" returns object type
 print(type(1))
@@ -157,9 +157,9 @@ print(type(1))
 # https://docs.python.org/library/functions.html
 
 
-### If-else and bool ###
+# -- If-else and bool --
 
-## If-elif-else ##
+# - If-elif-else -
 
 # If statement is as simple as
 a = 4
@@ -169,7 +169,7 @@ else:
     print(0)
 # 4
 
-# Pay attention to colon and that blocks inside if-else statement are shifted. 
+# Pay attention to colon and that blocks inside if-else statement are shifted.
 
 if a < 0:
     print(-a)
@@ -189,7 +189,7 @@ else:
     print(0)
 # 4
 
-## Indentation ##
+# - Indentation -
 
 # Indention is a part of Python language. You should always use one type of
 # indention: # spaces or tabs. Otherwise interpreter will fail with
@@ -200,11 +200,11 @@ else:
 # However sometimes indent means nothing
 a = (1
      + 2
-    - 3j)
+     - 3j)
 print(a)
 # (3-3j)
 
-## Boolean type variables and Boolean value of variables ##
+# - Boolean type variables and Boolean value of variables -
 
 # At fact we have already met Boolean variables above inside if statement.
 print(1 > 0)
@@ -233,7 +233,7 @@ print(bool(0))
 # False
 
 
-### While loop ###
+# -- While loop --
 
 # While statement is as simple as if
 a = 0
@@ -244,7 +244,7 @@ while a < 10:
 print(s)
 # 45
 
-## Continue and break statements ##
+# - Continue and break statements -
 
 # You can skip step of a loop using continue statement:
 a = 0
@@ -269,7 +269,7 @@ print(s)
 # 1035
 # This is an artificial example but pay attention how to make infinite loop.
 
-## while and else together ##
+# - while and else together -
 
 # If use want to catch break from while (or for) loop use while-else:
 a = 0
@@ -292,6 +292,6 @@ while a < 10:
         break
 else:
     print(10)
-# 12    
+# 12
 
 # This syntax should be preferred to using boolean flag.

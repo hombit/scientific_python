@@ -12,31 +12,30 @@ from numpy.testing import assert_allclose, assert_array_equal
 # We have talked about 1-D ndarrays in `arrays.py`. Read it before this file.
 
 
+# -- Creation --
 
-### Creation ###
-
-## np.array ##
+# - np.array -
 
 # Usually np.array understands that nested list/tuple represents
 # multidimensional array:
 a = np.array([
-    [1,2,3],
-    [4,5,6],
+    [1, 2, 3],
+    [4, 5, 6],
 ])
 assert a.ndim == 2
 assert a.shape == (2, 3)
 # ndarray.shape attribute contains sizes of the array throw its axes.
 
-a = np.array([1,2,3], ndmin=2)
+a = np.array([1, 2, 3], ndmin=2)
 # Produced one additional dimension. Same as a = np.array([[1,2,3]])
 assert a.ndim == 2
 assert a.shape == (1, 3)
-assert_array_equal(a, [[1,2,3]])
-a = np.array([1,2,3], ndmin=10)
+assert_array_equal(a, [[1, 2, 3]])
+a = np.array([1, 2, 3], ndmin=10)
 assert a.ndim == 10
 assert a.shape == (1,)*9 + (3,)
 
-## np.zeros, np.ones, etc ##
+# - np.zeros, np.ones, etc -
 
 # All functions producing ndarrays can accept tuple with the shape of the array
 # instead of alone integer:
@@ -48,31 +47,30 @@ assert a.ndim == len(shape)
 assert a.size == np.product(shape)  # same as np.prod, multiplies all elements
 
 
+# -- Reshaping --
 
-### Reshaping ###
-
-## ndarray.reshape (np.reshape) ##
+# - ndarray.reshape (np.reshape) -
 
 # You can produce a new view of the original array with the different shape:
 a = np.arange(16)
-square = a.reshape(4,4)
-assert square.shape == (4,4)
+square = a.reshape(4, 4)
+assert square.shape == (4, 4)
 assert not square.flags.owndata
 
-## ndarray.resize (ndarray.shape = ...) ##
+# - ndarray.resize (ndarray.shape = ...) -
 
 # Also you can change the shape of current ndarray object, this will not affect
 # data nor create new ndarray object.
 a = np.arange(16)
 assert a.ndim == 1
-a.resize((4,4))  # This returns None
+a.resize((4, 4))  # This returns None
 assert a.ndim == 2
 # The equivalent of ndarray.resize() is directly changing of `ndarray.shape`
 # attribute:
-a.shape = (2,2,2,2)
+a.shape = (2, 2, 2, 2)
 assert a.ndim == 4
 
-# Sometimes resizing of current ndarray object is impossible. This is an 
+# Sometimes resizing of current ndarray object is impossible. This is an
 # example from np.reshape() documentation:
 a = np.zeros((10, 2))
 # A transpose make the array non-contiguous
@@ -86,7 +84,7 @@ try:
 except AttributeError as e:
     assert str(e) == 'incompatible shape for a non-contiguous array'
 
-## Smart reshaping ##
+# - Smart reshaping -
 
 # You can use special value "-1" for a dimension size which you wouldn't like
 # to calculate manually:
@@ -107,93 +105,92 @@ except ValueError as e:
     assert str(e) == 'can only specify one unknown dimension'
 
 
+# -- Indexing --
 
-### Indexing ###
-
-## Simple indexing ##
+# - Simple indexing -
 
 # Remember that simple indexing always returns a view on original array and
 # does not copy data.
 
 a = np.array([
-    [1,2,3],
-    [4,5,6],
+    [1, 2, 3],
+    [4, 5, 6],
 ])
 a_0 = a[0]    # For n-D array one index returns view
 assert not a_0.flags.owndata
 assert a_0.ndim == 1
-assert_array_equal(a[0], [1,2,3])
+assert_array_equal(a[0], [1, 2, 3])
 a_02 = a[0][2]  # a_0 is 1-D ndarray, so we can get its elements by index
 
 # A more numpyish way to take several indexes is using comma-separated index:
-assert a[0,2] == a[0][2]
+assert a[0, 2] == a[0][2]
 # It is more flexible, and provides possibility to use slices not only for the
 # last axis:
-assert np.all(a[0][0:2] == a[0,0:2])
+assert np.all(a[0][0:2] == a[0, 0:2])
 # but:
-assert not np.all(a[0:2,1] == a[0:2][1])
+assert not np.all(a[0:2, 1] == a[0:2][1])
 
 # Example: getting the first column of 2-D array `a`:
-assert_array_equal(a[:,0], [1,4])
+assert_array_equal(a[:, 0], [1, 4])
 
 
-## np.newaxis ##
+# - np.newaxis -
 
 # You can produce new length of one axis using special index np.newaxis:
-a = np.array([1,2,3])
-b = a[1,np.newaxis]  # [2]
+a = np.array([1, 2, 3])
+b = a[1, np.newaxis]  # [2]
 assert b.shape == (1,)
 assert b[0] == a[1]
 
 
-## Ellipsis ##
+# - Ellipsis -
 
 # "..." expression can be used as replacement of numerical ":" expressions:
 a = np.arange(32).reshape((2,)*5)
 assert a.ndim == 5
 assert_array_equal(a.shape, np.full(5, 2))
-assert_array_equal(a[1,:,:,:,0], a[1,...,0])
+assert_array_equal(a[1, :, :, :, 0], a[1, ..., 0])
 
 
-## `tuple` object as an index ##
+# - `tuple` object as an index -
 
 # If you would like to form index before usage then you can do it using tuple.
-a = np.arange(16).reshape(4,4)
+a = np.arange(16).reshape(4, 4)
 index = (2, 2)
-assert a[index] == a[2,2] == a[(2, 2)]
+assert a[index] == a[2, 2] == a[(2, 2)]
 
 # Be careful and remember that a list index is an indexing array and operates
 # in the different way then tuple!
-assert a[[2,2]].size > 1
-assert not np.all(a[(2,2)] == a[[2,2]])
+assert a[[2, 2]].size > 1
+assert not np.all(a[(2, 2)] == a[[2, 2]])
 
-# Index tuple can contain not only integers but some special built-in objects 
+# Index tuple can contain not only integers but some special built-in objects
 # as slice or Ellipsis:
 a.shape = (2,)*4
 index = (1, Ellipsis)
-assert_array_equal(a[index], a[1,...])
+assert_array_equal(a[index], a[1, ...])
 
 a.shape = 2, 8
-index = (0, slice(1,None,2))
-assert_array_equal(a[index], a[0,1::2])
+index = (0, slice(1, None, 2))
+assert_array_equal(a[index], a[0, 1::2])
 
 # Use np.s_ and np.index_exp are so-called index tricks. `numpy` index tricks
 # are used as indexed objects but don't hold any data and acts similar to
 # functions. Examples from np.s_ documentation:
 assert np.s_[2::2] == slice(2, None, 2)
-assert np.s_[2::2,:] == (slice(2,None,2), slice(None))
-assert_array_equal(np.array([0, 1, 2, 3, 4])[np.s_[2::2]], [2,4])
+assert np.s_[2::2, :] == (slice(2, None, 2), slice(None))
+assert_array_equal(np.array([0, 1, 2, 3, 4])[np.s_[2::2]], [2, 4])
 # The only difference is that np.index_exp always returns tuple:
 ie = np.index_exp[2::2]
 assert isinstance(ie, tuple)
 assert ie == (np.s_[2::2],)
-assert np.index_exp[2::2,:] == np.s_[2::2,:]
+assert np.index_exp[2::2, :] == np.s_[2::2, :]
 
-## np.ndenumerate ##
+# - np.ndenumerate -
 
 # Built-in enumerate generator can be used for iterating over only the first
 # axis:
-a = np.array([[1,2,3],[4,5,6]])
+a = np.array([[1, 2, 3], [4, 5, 6]])
 ii = 0
 for i, x in enumerate(a):
     assert i == ii  # i is an integer
@@ -221,41 +218,41 @@ a = np.array(a)
 b = []
 for i in range(shape[0]):
     for j in range(shape[1]):
-        b.append([i,j])
+        b.append([i, j])
 assert_array_equal(a, b)
 
 
-### Stacks and splits ###
+# -- Stacks and splits --
 
 # Remember that ndarrays have constant size and every array join or split
 # copies data to the new object.
 
-a = np.arange(0, 4).reshape(2,2)
-b = np.arange(4, 8).reshape(2,2)
-c = np.arange(8,12).reshape(2,2)
+a = np.arange(0, 4).reshape(2, 2)
+b = np.arange(4, 8).reshape(2, 2)
+c = np.arange(8, 12).reshape(2, 2)
 
-## np.concatenate ##
+# - np.concatenate -
 # Stack over the first axis (vertical stack for 2-D array)
-v = np.concatenate((a,b,c))  # equivalent to deprecated np.vstack
-assert_array_equal(v, np.arange(12).reshape(6,2))
+v = np.concatenate((a, b, c))  # equivalent to deprecated np.vstack
+assert_array_equal(v, np.arange(12).reshape(6, 2))
 # Stack over the second axis (horizontal stack for 2-D array)
-h = np.concatenate((a.T,b.T,c.T), axis=1)  # equivalent to deprecated np.hstack
+h = np.concatenate((a.T, b.T, c.T), axis=1)  # equivalent to np.hstack
 assert_array_equal(
     h,
     np.concatenate((
-        np.arange(0,12,2).reshape(1,-1),
-        np.arange(1,12,2).reshape(1,-1)
+        np.arange(0, 12, 2).reshape(1, -1),
+        np.arange(1, 12, 2).reshape(1, -1)
     ))
 )
 
-## np.r_ ##
+# - np.r_ -
 
 # np.r_ is a so-called index trick: it provides ndarray creation interface
 # throw its index.
 # Default np.r_ behaviour is equal to np.concatenate(tuple, axis=0):
 assert_array_equal(
-    np.r_[a,b,c],
-    np.concatenate((a,b,c))
+    np.r_[a, b, c],
+    np.concatenate((a, b, c))
 )
 assert_array_equal(
     np.r_[
@@ -265,8 +262,8 @@ assert_array_equal(
         [3]*4           # list
     ],
     np.concatenate((
-        np.arange(0,10),
-        np.linspace(0,1,5),
+        np.arange(0, 10),
+        np.linspace(0, 1, 5),
         a.reshape(-1),
         np.full(4, 3)
     ))
@@ -275,41 +272,41 @@ assert_array_equal(
 # Axis to concatenate along can be specified as a string:
 assert_array_equal(
     np.r_['1', a, b, c],
-    np.concatenate((a,b,c), axis=1)
+    np.concatenate((a, b, c), axis=1)
 )
 
-## np.stack ##
+# - np.stack -
 
 # np.stack joins arrays throw new axis
-s = np.stack((a,b,c))
-assert s.shape == (3,2,2)
+s = np.stack((a, b, c))
+assert s.shape == (3, 2, 2)
 assert_array_equal(
     s,
-    np.r_[a,b,c].reshape(-1,2,2)
+    np.r_[a, b, c].reshape(-1, 2, 2)
 )
 
-## np.column_stack ##
+# - np.column_stack -
 
 # This function always produces 2-D array
 x = np.column_stack((np.zeros(5), np.arange(5)))
-assert x.shape == (5,2)
-x = np.column_stack(([[1,2,3],[3,2,1]], np.arange(6).reshape(2,-1)))
-assert x.shape == (2,6)
+assert x.shape == (5, 2)
+x = np.column_stack(([[1, 2, 3], [3, 2, 1]], np.arange(6).reshape(2, -1)))
+assert x.shape == (2, 6)
 
-## np.mgrid ##
+# - np.mgrid -
 
 # np.mgrid is used to produce a stack of ndarrays with specified shape filled
 # by identical 1-D arrays stacked over different shapes. An example:
-grid = np.mgrid[0:2,0:3]
-assert grid.shape == (2,2,3)
+grid = np.mgrid[0:2, 0:3]
+assert grid.shape == (2, 2, 3)
 X, Y = grid
 assert_array_equal(
     X,
-    [[0,0,0],[1,1,1]]
+    [[0, 0, 0], [1, 1, 1]]
 )
 assert_array_equal(
     Y,
-    [[0,1,2],[0,1,2]]
+    [[0, 1, 2], [0, 1, 2]]
 )
 
 # 1-D mgrid is the same as np.r_:
@@ -321,27 +318,26 @@ assert_array_equal(np.mgrid[0:2:5j], np.r_[0:2:5j])
 # way:
 n = 11
 sl = np.s_[-1:1:n*1j]
-X, Y = np.mgrid[sl,sl]
+X, Y = np.mgrid[sl, sl]
 Z = np.exp(-(X**2+Y**2)/0.5)
 # Check distribution throw Ox and Oy axes and their bisector
-assert_allclose(Z[n//2,:], np.exp(-np.r_[sl]**2/0.5))
-assert_allclose(Z[:,n//2], Z[n//2,:])
+assert_allclose(Z[n//2, :], np.exp(-np.r_[sl]**2/0.5))
+assert_allclose(Z[:, n//2], Z[n//2, :])
 assert_allclose(
     Z.diagonal(),
-    np.exp(-np.linspace(-np.sqrt(X[0,0]**2+Y[0,0]**2),
-                        np.sqrt(X[-1,-1]**2+Y[-1,-1]**2),
-                        n)**2 / 0.5
-    )
+    np.exp(-np.linspace(-np.sqrt(X[0, 0]**2+Y[0, 0]**2),
+                        np.sqrt(X[-1, -1]**2+Y[-1, -1]**2),
+                        n)**2 / 0.5)
 )
 
-## np.split ##
+# - np.split -
 
 # np.split produces a list of a ndarray pieces
 
-v = np.concatenate((a,b,c))
-a1, b1, c1 = np.split(v,3)
-assert_array_equal(a,a1)
-assert_array_equal(b,b1)
-assert_array_equal(c,c1)
+v = np.concatenate((a, b, c))
+a1, b1, c1 = np.split(v, 3)
+assert_array_equal(a, a1)
+assert_array_equal(b, b1)
+assert_array_equal(c, c1)
 
 # See also np.array_split

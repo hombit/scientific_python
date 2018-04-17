@@ -20,8 +20,8 @@ assert erfc(0) == 1
 assert_allclose(erf(1), 1 - erfc(1))
 
 
-timeit_kwargs= {
-    'stmt' : 'contfrac(a)',
+timeit_kwargs = {
+    'stmt': 'contfrac(a)',
     'number': 10,
     'setup': """import numpy as np
 from {pack}contfrac import {func}_contfrac as contfrac

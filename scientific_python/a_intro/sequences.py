@@ -10,9 +10,9 @@
 from __future__ import division, print_function
 
 
-### list ###
+# -- list --
 
-## "[]" operator
+# - "[]" operator -
 
 # Empty list
 a = []
@@ -32,7 +32,7 @@ a[-1] = 12
 print(a)
 # [1, 2.3, 4.3, 12]
 
-## Basic slicing ##
+# - Basic slicing -
 
 # Operator "[]" supports slicing. We will discuss slicing in more details later
 # with numpy module.
@@ -52,13 +52,13 @@ a[::2] = [-1, -4.3]
 print(a)
 # [-1, 2.3, -4.3, 12]
 
-## Size of sequence ## 
+# - Size of sequence -
 
 # Built-in function len() returns sequence size
 print(len(a), len(b))
 # 4 2
 
-## Methods of the list and "del" statement ##
+# - Methods of the list and "del" statement -
 
 # list has some basic methods to manipulate with its data
 print(a)
@@ -98,7 +98,7 @@ print(a)
 # [-1, -4.3, 12]
 
 # Add all elements from another sequence (any iterabel object in general)
-b = [1,2,3]
+b = [1, 2, 3]
 a.extend(b)
 print(a)
 # [-1, -4.3, 12, 1, 2, 3]
@@ -109,13 +109,13 @@ print(a)
 # >> [-4.3, -1, 1, 2, 3, 12]
 
 
-### For loop and "in" statement ###
+# -- For loop and "in" statement --
 
-## Basic example ##
+# - Basic example -
 
 # In Python for loop has a bit different syntax than in C-like languages. NB
 # indention:
-for x in [1,2,3,4]:
+for x in [1, 2, 3, 4]:
     print(x)
 # 1
 # 2
@@ -124,7 +124,7 @@ for x in [1,2,3,4]:
 
 # Do not modify list while looping!
 
-## range() ##
+# - range() -
 
 # Looping works for any iterable variable. The special case of iterable object
 # is generator. Generator doesn't hold all yielding values but calculate them
@@ -145,7 +145,7 @@ for x in range(6, -1, -2):
 # 2
 # 0
 
-## enumerate()
+# - enumerate() -
 
 # Often we need to iterate both list elements and its indexes. Of course, you
 # can iterate over index `for i in range(len(a))` and then get element by its
@@ -157,7 +157,7 @@ for i, x in enumerate(a):
 # 0 hello
 # 1 world
 
-## "in" ##
+# - "in" -
 
 # "in" statement has a stand-alone usage, it is an binary operator that returns
 # True when the first variable is a member of the second variable.
@@ -171,14 +171,13 @@ except TypeError as e:
     print(e)
 # argument of type 'int' is not iterable
 
-# Say hello exceptions, I wouldn't tell a lot about them, basically they work as
-# in other popular objective oriented languages like C++ or Java.
+# Say hello exceptions, I wouldn't tell a lot about them, basically they work
+# as in other popular objective oriented languages like C++ or Java.
 
 
+# -- Object model in Python --
 
-### Object model in Python ###
-
-## Variables as references ##
+# - Variables as references -
 
 # Most of the variables you will use in Python holds references to associated
 # objects, not object themselves. The exceptions of this rule are some
@@ -201,8 +200,8 @@ print(a, b)
 # library
 a = [1, 2, 3]
 # We can use import in the any part of the code. Exception is `from __future__
-# import ...`. The good style is import all stuff in the beginning of the file
-# or function
+# import ...`. The good style is importing all stuff at top of the file or
+# function
 import copy
 b = copy.copy(a)  # or just a.copy() in Python 3
 a[0] = -1
@@ -216,10 +215,10 @@ a[-1][0] = -100
 print(a, b)
 # [1, 2, 3, [-100, 5, 6]] [1, 2, 3, [-100, 5, 6]]
 
-# What happens? copy.copy(a) is shallow and copied only members of `a`, while its
-# last member is a reference to another list that has copied by reference not
-# by values of its members. If you want copy to be deep (recursive) and copy
-# all sub-members and sub-attributes of the object then you can use
+# What happens? copy.copy(a) is shallow and copied only members of `a`, while
+# its last member is a reference to another list that has copied by reference
+# not by values of its members. If you want copy to be deep (recursive) and
+# copy all sub-members and sub-attributes of the object then you can use
 # copy.deepcopy() function from `copy` module:
 a = [1, 2, 3, [4, 5, 6]]
 b = copy.deepcopy(a)
@@ -227,7 +226,7 @@ a[-1][0] = -100
 print(a, b)
 # [1, 2, 3, [-100, 5, 6]] [1, 2, 3, [4, 5, 6]]
 
-## "is" ##
+# - "is" -
 
 # "is" statement can be used to check if two variables hold references to the
 # same object:
@@ -256,7 +255,7 @@ a = 511
 print(511 is 511, a is 511, -100 is -100)
 # True False False
 
-## None ##
+# - None -
 
 # None is a special built-in object. It is used when you need to return "empty"
 # value from the function or send it as function argument. Usually None is used
@@ -276,9 +275,9 @@ print(none == None)  # Not recommended
 # True
 
 
-### tuple ###
+# -- tuple --
 
-## Basics ##
+# - Basics -
 
 # Empty tuple
 t = ()
@@ -296,7 +295,7 @@ print(t[0])
 print(t[-1])
 # 'hello'
 
-## One element tuple ##
+# - One element tuple -
 
 # Be very careful when produce one element tuples. This is NOT a tuple:
 a = (1)
@@ -310,7 +309,7 @@ print(a, type(a))
 # make a mistake like this. In the modern Python trailing comma is valid in
 # almost every place you may want to use it.
 
-## Mutability ##
+# - Mutability -
 
 # Tuples are immutable objects. It means that you cannot change their size,
 # replace or add elements. NB that even operator "+=" will produce new object,
@@ -327,7 +326,7 @@ try:
     t[0] = -1
 except TypeError as e:
     print(e)
-# 'tuple' object does not support item assignment    
+# 'tuple' object does not support item assignment
 
 # Of course you still can modify mutable elements of the tuple:
 t = (1, [2, 3])
@@ -335,9 +334,9 @@ t[1][0] = -100
 print(t)
 # (1, [-100, 3])
 
-## Unpack values ##
+# - Unpack values -
 
-t = (1,2,3)
+t = (1, 2, 3)
 a, b, c = t
 print(a, b)
 # 1 2
@@ -350,12 +349,16 @@ a, _, b = t
 print(a, b)
 # 1 3
 
-## Return numerical values from functions ##
+# - Return numerical values from functions -
 
 # Going ahead let me say that returning numerical values from the function will
 # produce a tuple:
+
+
 def f():
     return 1, 2
+
+
 x = f()
 print(x, type(x))
 # (1, 2) <class 'tuple'>
@@ -364,9 +367,9 @@ print(b, a)
 # 2 1
 
 
-### dict ###
+# -- dict --
 
-## Construction ##
+# - Construction -
 
 # Empty dict
 d = {}
@@ -375,7 +378,7 @@ d = dict()
 d = {0: 'zero', 2: 'two', 10: 'ten'}
 print(d)
 
-## Value access
+# - Value access -
 
 # Value access syntax is the same as for lists:
 print(d[0])
@@ -401,7 +404,7 @@ print(d.get(500, 'Unknown value'))
 print(d.get(500))
 # None
 
-## Other methods ##
+# - Other methods -
 
 # Remove and return value by key:
 print(d.pop(0))
@@ -417,7 +420,7 @@ d.update(dd)
 print(d)
 # {0: 'zero', 1: 'ONE', 2: 'TWO'}
 
-## Hashable variables ##
+# - Hashable variables -
 
 # Note that not any element can be a key of a dict, but only hashable objects.
 # Hashable object must have specific __hash__() method that returns integral
@@ -431,12 +434,12 @@ d[3 + 0j] = 'complex'
 d[(1, 2, 3)] = 'tuple'
 d['hello world'] = 'str'
 try:
-    d[[1, 2, 3]] = 'list'    
+    d[[1, 2, 3]] = 'list'
 except TypeError as e:
     print(e)
-# unhashable type: 'list'    
+# unhashable type: 'list'
 
-## Iterating ##
+# - Iterating -
 
 d = {0: 'zero', 2: 'two', 10: 'ten'}
 
@@ -474,8 +477,7 @@ for k, v in d.items():
 # The order can differ
 
 
-
-### set and frozenset ###
+# -- set and frozenset --
 
 # I have a very good definition for this type: set is a hash-set =).
 # You can think that set is a dictionary without values: it can fast (O(1))
@@ -487,7 +489,7 @@ for k, v in d.items():
 # Empty set
 s = set()
 
-s = {1,}  # This is set, not dict. Trailing comma is optional.
+s = {1, }  # This is a set, not dict. Trailing comma is optional.
 s.add(1)
 s.add(30)
 print(s)
@@ -507,7 +509,7 @@ s.update(ss)
 print(s)
 # {-1, -2, 0, 1, 2, 4}
 
-## frozenset ##
+# - frozenset -
 
 # frozenset is a immutable variant of set.
 
@@ -518,19 +520,18 @@ print(s)
 # {frozenset({0, 1, 2, 3, 4}): 'frozenset'}
 
 
-
-### Examples ###
+# -- Examples --
 
 # I try to keep examples clean, so they can be unoptimized and slow
 
-## Sorted list without duplicates ##
+# - Sorted list without duplicates -
 
 a = [1, 0, 0, -1, 1, 0, 3, 1, 0, 5, 2]
 b = sorted(set(a))
 print(b)
 # [-1, 0, 1, 2, 3, 5]
 
-## Count the most frequent element ##
+# - Count the most frequent element -
 
 d = {}
 max_a_item = a[0]

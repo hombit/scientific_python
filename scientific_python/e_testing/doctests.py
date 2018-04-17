@@ -10,7 +10,7 @@ Docstrings (PEP 257) support special type of tests - doctests:
 https://docs.python.org/3/library/doctest.html
 
 Remember that docstrings can be used to produce beautiful HTML documentation,
-for example compare help(numpy.array) and 
+for example compare help(numpy.array) and
 https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html
 
 Doctests are used to write examples and provide some simple tests. You
@@ -57,7 +57,7 @@ import math
 
 def sqrt_sin(x):
     """Returns square root from sinus
-    
+
     Examples
     --------
     Zero input produces zero output:

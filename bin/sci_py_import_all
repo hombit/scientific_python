@@ -9,9 +9,13 @@ from __future__ import division, print_function, unicode_literals
 from importlib import import_module
 from pkgutil import walk_packages
 
+import scientific_python
+
+
 class Everything(object):
     def __contains__(self, x):
         return True
+
 
 def import_modules_from_package(pkg):
     names_in_all = getattr(pkg, '__all__', Everything())
@@ -27,6 +31,6 @@ def import_modules_from_package(pkg):
         if ispkg:
             import_modules_from_package(module)
 
-import scientific_python
+
 print(scientific_python.__path__)
 import_modules_from_package(scientific_python)

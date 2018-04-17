@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-### Python 2 vs 3 ###
+# -- Python 2 vs 3 --
 
 from __future__ import division, print_function, unicode_literals
 
@@ -18,10 +18,13 @@ from __future__ import division, print_function, unicode_literals
 # https://pythonhosted.org/six/
 
 
+# We will use it later:
+from sys import version_info
 
-### Basics ###
 
-## Declaration and slicing ##
+# -- Basics --
+
+# - Declaration and slicing -
 
 # str is a built-in type representing a sequences of Unicode characters (bytes
 # in Python 2). Objects of str are immutable, hashable and iterable.
@@ -41,7 +44,7 @@ except TypeError as e:
 set_with_str = {s}  # str is hashable
 assert s == set_with_str.pop()
 
-## Docstring ##
+# - Docstring -
 
 # str can be constructed with one more type of quotes: triple quotes (double
 # prefered). Instead of other two types this one can be used for multiline
@@ -50,17 +53,21 @@ assert s == set_with_str.pop()
   - As comments (like this one) (it isn't recommended by PEP 8).
   - As documentation string for function or class (see bellow).
 """
+
+
 def my_mystery_function(name='Joe'):
     """This function does black magic and can destroy your life.
-    
+
     Keyword arguments:
     name -- The name of person to curse.
     """
     return name + ' is cursed'
 
+
 def my_simple_function():
     """Even one-line docstrings should be in triple quotes (PEP 257)"""
     return
+
 
 # These docstrings can be accessed via __doc__ variable (because functions are
 # objects too). You can see a "documentation" produced by these docstrings when
@@ -80,11 +87,11 @@ assert 'pep' in my_simple_function.__doc__.lower()
 # str has a lot of methods, use them all instead of write your own code:
 # https://docs.python.org/3/library/stdtypes.html#string-methods
 
-## Raw strings ##
+# - Raw strings -
 
 # Ordinary strings declaration supports "\" symbol for special characters like
 # \n — end of line, \' and \" produces actual quote instead of end of string
-# declaration, \\ produces \ symbol itself, see full list on 
+# declaration, \\ produces \ symbol itself, see full list on
 # https://docs.python.org/3/reference/lexical_analysis.html
 
 # However, using of "\" can be confusing and ugly, for example in regular
@@ -97,21 +104,20 @@ string = 'Hello\nWorld'
 assert len(raw_string.splitlines()) == 1
 assert len(string.splitlines()) == 2
 
-## Other prefixes ##
+# - Other prefixes -
 
 # There are two more types of prefixes: "b"/"B" and "u"/"U". They are used to
 # declare bytes (str in Python 2) and str (unicode in Python 3). Prefix "f"/"F"
 # will be discussed in the next section.
 
 
-
-### Formatting ###
+# -- Formatting --
 
 # There are three syntaxes of string formatting In the modern Python. First two
 # of them are described in examples on https://pyformat.info . Here we will
 # discuss only basics of formatting.
 
-## operator "%" ##
+# - operator "%" -
 
 s = '%d' % 1
 assert s == '1'
@@ -123,7 +129,7 @@ assert s == 'x = 1'
 # Syntax of format mini-language is very close to *printf one and described on
 # https://docs.python.org/3/library/string.html#format-specification-mini-language
 
-## str.format() ##
+# - str.format() -
 
 s = '{}'.format(1)
 assert s == '1'
@@ -139,15 +145,14 @@ assert s1 == s2 == s3 == s4
 # Actual braces are produced by "{{" and "}}":
 s = r'{symbol} = m \times c^{{2}}'.format(symbol='E')
 
-## "f" prefix ##
+# - "f" prefix -
 
 # "f" prefix is introduced in Python 3.6
 # All code for this syntax is located in separate file `strings_f_prefix.py`
 # because on Python prior 3.6 using of this prefix produces syntax error.
-from sys import version_info
 if version_info >= (3, 6):
     if __package__:
         from .strings_f_prefix import f_prefix
-    else:    
+    else:
         from strings_f_prefix import f_prefix
     f_prefix()

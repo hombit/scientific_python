@@ -23,7 +23,7 @@ else:
 
 if __package__:
     from .simple_module import goodbye as good_bye
-else:    
+else:
     from simple_module import goodbye as good_bye
 # Print is silent again.
 
@@ -37,4 +37,3 @@ try:
     assert False
 except NameError as e:
     assert str(e) == "name 'goodbye' is not defined"
-    

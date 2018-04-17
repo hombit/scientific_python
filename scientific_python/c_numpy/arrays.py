@@ -2,12 +2,14 @@
 
 from __future__ import division, print_function
 
+from timeit import timeit
+
 import numpy as np  # this is a common alias from numpy documentation
 from numpy.testing import assert_allclose, assert_array_equal
 
 # `numpy` is a linear algebra library for python written primarily on C
 # https://numpy.org `numpy` is a part of SciPy ecosystem that includes other
-# useful packages for science programming such as `scipy`, `IPython`, `pandas` 
+# useful packages for science programming such as `scipy`, `IPython`, `pandas`
 # and `matplotlib`.
 
 # The kernel of `numpy` is `ndarray` class that implements multidimensional
@@ -24,29 +26,29 @@ from numpy.testing import assert_allclose, assert_array_equal
 # If you are a fan of Matlab see also:
 # https://docs.scipy.org/doc/numpy/user/numpy-for-matlab-users.html
 
-### Array construction ###
+# -- Array construction --
 
-## np.array ##
+# - np.array -
 # You don't need to construct ndarray manually, use instead one of construction
 # functions. The main one is `array`:
-a = np.array([0,1,2,3,4])
+a = np.array([0, 1, 2, 3, 4])
 a = np.array(range(5))
 
-a = np.array([0,1,2,3,4], dtype=np.uint8)
+a = np.array([0, 1, 2, 3, 4], dtype=np.uint8)
 a[0] = -1
 # numpy numerical types are close related to C's types:
 assert a[0] == 255
 # Long types are implemented on some 64bit systems:
 try:
-    a = np.array([1,2,3,4], dtype=np.float128)
+    a = np.array([1, 2, 3, 4], dtype=np.float128)
     assert a.itemsize == 16
-    b = np.array([1,2,3,4], dtype=np.complex256)
+    b = np.array([1, 2, 3, 4], dtype=np.complex256)
     assert a.itemsize == 16
 except AttributeError as e:
     assert str(e) == "module 'numpy' has no attribute 'float128'"
 
-## Implicit type conversion ##
-a = np.array([1,2,3,4], dtype=np.int)
+# - Implicit type conversion -
+a = np.array([1, 2, 3, 4], dtype=np.int)
 a[0] = 5.5  # implicit type conversion as in C
 assert a[0] == 5
 # Implicit conversion from complex to float and int is denied:
@@ -57,7 +59,7 @@ except TypeError as e:
     assert str(e).startswith("can't convert complex to")
     # "... to int" in py3, "... to long" in py2
 
-## Creation functions ##
+# - Creation functions -
 
 # `np.arange` is `numpy` analogue of built-in `range` function:
 a = np.arange(5)
@@ -123,9 +125,9 @@ assert a.dtype == b.dtype
 assert np.all(b == np.floor(x))
 
 
-### Array view and slicing ###
+# -- Array view and slicing --
 
-## list-like indexing ##
+# - list-like indexing -
 
 # numpy arrays can be sliced just like built-in python sequenses: list, str or
 # tuple:
@@ -137,12 +139,12 @@ assert_array_equal(a[2:8], np.arange(2, 8))
 # Instead of regular python behaviour, numpy such slices does not copy elements
 # but produces new ndarray that is a view of the original one.
 # First, let's remember list's behaviour:
-l = list(range(10))
-l_slice = l[:5]
-l_slice[:] = [-1]*5  # replace all elements
-assert_array_equal(l_slice, -1)
-assert_array_equal(l[:5], list(range(5)))  # original list haven't changed
-assert l[:5] != l_slice
+li = list(range(10))
+li_slice = li[:5]
+li_slice[:] = [-1]*5  # replace all elements
+assert_array_equal(li_slice, -1)
+assert_array_equal(li[:5], list(range(5)))  # original list haven't changed
+assert li[:5] != li_slice
 
 # But, ndarray's behaviour is different:
 a = np.arange(10)
@@ -220,10 +222,9 @@ a = np.ones(10)
 a[::2] = 0
 assert_array_equal(a, np.arange(10) % 2)
 
-# You should avoid to iterate ndarray (e.g. in for-loop), because numpy bench 
-# operations over array's elements and make them much faster together than one
-# by one.
-from timeit import timeit
+# You should avoid to iterate ndarray (e.g. in for-loop), because numpy
+# benches operations over array's elements and make them much faster together
+# than one by one.
 for n in np.logspace(2, 6, 3, dtype=np.int):
     kwargs = {
         'number': 10,
@@ -241,7 +242,7 @@ for n in np.logspace(2, 6, 3, dtype=np.int):
     )
     assert t_for > t_bench
 
-## Indexing array ##
+# - Indexing array -
 
 # ndarray can be indexed in some more ways than built-in python collections.
 # One of these ways is indexing array: ndarray or list (but not tuple!) with
@@ -261,10 +262,10 @@ a[index] += 1
 assert not np.all(a == a_copy)  # a has been changed
 # If indexing array has duplicate index then this index is changed only once
 a = np.zeros(2)
-a[[0,0,0,0]] += 1
-assert_array_equal(a, [1,0])
+a[[0, 0, 0, 0]] += 1
+assert_array_equal(a, [1, 0])
 
-## Mask (boolean) index ##
+# - Mask (boolean) index -
 
 # One more type of index that doesn't work for built-in collections is mask (or
 # boolean) index. This is a ndarray (or a list, not a tuple) of boolean

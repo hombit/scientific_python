@@ -8,7 +8,8 @@ from __future__ import division, print_function, unicode_literals
 # directory or from interpreter started in the directory.
 
 # When module is imported it is executed.
-print('File {} is executed'.format(__file__))  # you will see this message on import
+# So uou will see this message on import:
+print('File {} is executed'.format(__file__))
 
 # Module imports only one time, other imports will only change current globals.
 # See importlib from standard library for various import tools:
@@ -18,8 +19,10 @@ print('File {} is executed'.format(__file__))  # you will see this message on im
 
 default_name = 'Anonymous'
 
+
 def hello(name=default_name):
     return 'Hello {}'.format(name)
+
 
 def goodbye(name=default_name):
     return 'Goodbye {}'.format(name)

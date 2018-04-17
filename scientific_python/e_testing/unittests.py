@@ -37,4 +37,3 @@ def test_suite():
 
 if __name__ == '__main__':  # checks if this file executed as script
     unittest.main()
-        

@@ -13,8 +13,10 @@ else:
     pyximport.install(setup_args={'include_dirs': [np.get_include()]})
     from cy_contfrac import contfrac as cython_contfrac
 
+
 def pure_contfrac(a):
     return reduce(lambda x, y: y + 1/x, a[::-1])
+
 
 @numba.jit
 def numba_contfrac(a):
@@ -22,6 +24,7 @@ def numba_contfrac(a):
     for i in range(len(a)-2, -1, -1):
         c = a[i] + 1/c
     return c
+
 
 n = 1000
 a = np.ones(n)

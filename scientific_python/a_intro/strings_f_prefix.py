@@ -7,6 +7,7 @@
 x = 1
 name = 'x'
 
+
 def f_prefix():
     s1 = '%s = %d' % ('x', x)
     s2 = '{} = {}'.format('x', x)
