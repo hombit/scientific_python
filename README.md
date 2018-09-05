@@ -50,7 +50,7 @@ This repository has a structure of [a Python package](https://packaging.python.o
 - [Official documentation](http://docs.python.org)
 - [Python code style guide](http://pep8.org)
 
-# Classes' materials (2018)
+# Classes materials (2018)
 
 Classes have place in classroom 48 of Sternberg Astronomical Institute MSU at 9:30 on Wednesdays from September to December 2018.
 
@@ -58,7 +58,7 @@ Date | Description | Materials | Video (in Russian)
 ---- | ----------- | --------- | ------------------
 2018.09.05 | Introduction | [`a_intro.basics`](./scientific_python/a_intro/basics.py) | 
 
-# Seminar materials (2017)
+# Classes materials (2017)
 
 Seminars had place in classroom 17 of Sternberg Astronomical Institute MSU at 13:30 on Fridays from September to December 2017. Records of on-line translations of the seminars are hosted [on YouTube](https://www.youtube.com/playlist?list=PLmgwC9JZdQnsPAZTVzzD5tttStuYGgskg).
 
