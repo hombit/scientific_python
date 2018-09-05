@@ -29,6 +29,34 @@ This repository has a structure of [a Python package](https://packaging.python.o
  - [`.dockerignore`](./.dockerignore) is just a link to [`.gitignore`](./.gitignore), it used to prevent load garbage into Docker container
  - [`.travis.yml`](./.travis.yml) is a [`Travis`](https://travis-ci.org) configuration file. `Travis` is a continuous integration (CI) system used to test this project with various Python versions, 2.7 and 3.5+ are supported
 
+# Useful links
+
+## Source code editors for Python
+- [IDLE](https://docs.python.org/3/library/idle.html): a simple Python source code editor. It is a part of Python standard library, so if you have Python, you probably have IDLE
+- [Visual Studio Code](https://code.visualstudio.com) (do not be confused with Visual Studio, they are two different products): a powerful source code editor
+- [Spyder](https://www.spyder-ide.org): the scientific Python development environment
+- [PyCharm](https://www.jetbrains.com/pycharm/): a powerful Python IDE (integrated development environment). PyCharm is closed source product, but Community edition is free to use and every student and professor can ask for a [free professional version](https://www.jetbrains.com/student/)
+
+## Dive into Python
+- [Learn Python in Y minutes](http://learnxinyminutes.com/python3/): short and deep language tutorial. This tutorial has [Russian version](https://learnxinyminutes.com/docs/ru-ru/python3-ru/)
+- [Dive into Python](http://www.diveintopython.net/index.html): old but still good Python handbook
+- [Official Python tutorial](https://docs.python.org/3/tutorial/)
+- [Python for astronomers](https://python4astronomers.github.io)
+- [Python 3 in one picture](https://fossbytes.com/wp-content/uploads/2015/09/python-3-in-one-pic.png): print it and enjoy
+- [Use of Python programming language in astronomy and science](https://arxiv.org/abs/1807.04806)
+
+## General documentation
+- [Zen of Python](http://pep20.prg) or just run `import this` in Python
+- [Official documentation](http://docs.python.org)
+- [Python code style guide](http://pep8.org)
+
+# Classes' materials (2018)
+
+Classes have place in classroom 48 of Sternberg Astronomical Institute MSU at 9:30 on Wednesdays from September to December 2018.
+
+Date | Description | Materials | Video (in Russian)
+---- | ----------- | --------- | ------------------
+2018.09.05 | Introduction | [`a_intro.basics`](./scientific_python/a_intro/basics.py) | 
 
 # Seminar materials (2017)
 
