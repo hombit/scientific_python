@@ -36,14 +36,20 @@ This repository has a structure of [a Python package](https://packaging.python.o
 Remember to use Python 3, 3.5 and later is good enough in 2018. You can check python version typing in console `python3 --version` or `import sys; print(sys.version)` in Python itself
 
 ### All platforms
-- [Anaconda Python distribution](https://www.anaconda.com/download/) is a good choice for scientific Python programming. It includes a lot of pre-compiled numerical and scientific modules and `conda` package manager where you can find even more packages, like `astropy` or `scikit-learn`
+- [Anaconda Python distribution](https://www.anaconda.com/download/) is a good choice for scientific Python programming on every platform. It includes a lot of pre-compiled numerical and scientific packages and `conda` package manager where you can find even more packages, like `astropy` or `scikit-learn`
 - [Official Python distribution](https://www.python.org/downloads/): good on Windows or macOS, when you like to build your environment from scratch.
 
 ### macOS
 Instead of official Python distribution I recommend to use [Homebrew](http://brew.sh) package manager, type `brew install python`
 
 ### Linux
-Probably you already have Python 3, check its version before start
+Probably you already have Python 3, check its version before start. If you haven't use your Linus package manager to install
+
+### iOS
+iOS doesn't have any application to use for scientific programming. The best choice is [Pythonista](http://omz-software.com/pythonista/) paid application that can run and edit Python 3.5 code and supports `numpy` package, but doesn't support `scipy` and other useful packages.
+
+### Android
+[PyDroid 3](https://play.google.com/store/apps/details?id=ru.iiec.pydroid3) looks good
 
 ## Source code editors for Python
 - [IDLE](https://docs.python.org/3/library/idle.html): a simple Python source code editor. It is a part of Python standard library, so if you have Python, you probably have IDLE
