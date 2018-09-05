@@ -328,6 +328,8 @@ print(b, a)  # 2 1
 
 
 # ## `dict` – dictionary
+# `dict` is a hash-table dictionary type. That means that element access,
+# insert and delete are all take $O(1)$ time
 
 # ### Construction
 
