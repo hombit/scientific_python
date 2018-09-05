@@ -31,6 +31,20 @@ This repository has a structure of [a Python package](https://packaging.python.o
 
 # Useful links
 
+## Install Python
+
+Remember to use Python 3, 3.5 and later is good enough in 2018. You can check python version typing in console `python3 --version` or `import sys; print(sys.version)` in Python itself
+
+### All platforms
+- [Anaconda Python distribution](https://www.anaconda.com/download/) is a good choice for scientific Python programming. It includes a lot of pre-compiled numerical and scientific modules and `conda` package manager where you can find even more packages, like `astropy` or `scikit-learn`
+- [Official Python distribution](https://www.python.org/downloads/): good on Windows or macOS, when you like to build your environment from scratch.
+
+### macOS
+Instead of official Python distribution I recommend to use [Homebrew](http://brew.sh) package manager, type `brew install python`
+
+### Linux
+Probably you already have Python 3, check its version before start
+
 ## Source code editors for Python
 - [IDLE](https://docs.python.org/3/library/idle.html): a simple Python source code editor. It is a part of Python standard library, so if you have Python, you probably have IDLE
 - [Visual Studio Code](https://code.visualstudio.com) (do not be confused with Visual Studio, they are two different products): a powerful source code editor
