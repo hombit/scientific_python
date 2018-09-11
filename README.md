@@ -76,7 +76,7 @@ Classes have place in classroom 48 of Sternberg Astronomical Institute MSU at 9:
 
 Date | Description | Materials | Video (in Russian)
 ---- | ----------- | --------- | ------------------
-2018.09.05 | Introduction | [`a_intro.basics`](./scientific_python/a_intro/basics.py) | 
+2018.09.05 | Introduction | [`a_intro.basics`](./scientific_python/a_intro/basics.py), [`a_intro.sequences`](./scientific_python/a_intro/sequences.py) (the first part about lists) | [link](https://youtu.be/yN5__ZYKeOE)
 
 # Classes materials (2017)
 
