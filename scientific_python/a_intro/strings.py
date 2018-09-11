@@ -170,4 +170,3 @@ if version_info >= (3, 6):
     else:
         from strings_f_prefix import f_prefix
     f_prefix()
-

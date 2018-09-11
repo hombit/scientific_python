@@ -15,4 +15,3 @@ def f_prefix():
     s3 = f'{name} = {x}'
     s4 = f'{name:s} = {x:d}'
     assert s1 == s2 == s3 == s4
-

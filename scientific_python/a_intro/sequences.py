@@ -445,7 +445,7 @@ for k, v in d.items():
 # An empty set
 s = set()
 
-s = {1,}  # This is a set, not dict. Trailing comma is optional.
+s = {1, }  # This is a set, not dict. Trailing comma is optional.
 s.add(1)
 s.add(30)
 print(s)  # {1, 30}
