@@ -33,7 +33,7 @@ This repository has a structure of [a Python package](https://packaging.python.o
 
 ## Install Python
 
-Remember to use Python 3, 3.5 and later is good enough in 2018. You can check python version typing in console `python3 --version` or `import sys; print(sys.version)` in Python itself
+Remember to use Python 3, 3.6 and later is good enough in 2018. You can check python version typing in console `python3 --version` or `import sys; print(sys.version)` in Python itself
 
 ### All platforms
 - [Anaconda Python distribution](https://www.anaconda.com/download/) is a good choice for scientific Python programming on every platform. It includes a lot of pre-compiled numerical and scientific packages and `conda` package manager where you can find even more packages, like `astropy` or `scikit-learn`
