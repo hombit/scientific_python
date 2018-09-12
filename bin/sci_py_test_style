@@ -50,6 +50,6 @@ if __name__ == '__main__':
             errors=errors
         )
         print(msg)
-        RuntimeError(msg)
+        raise RuntimeError(msg)
     else:
         print("Style check hasn't found any errors")
