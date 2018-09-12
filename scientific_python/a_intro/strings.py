@@ -26,8 +26,8 @@ from sys import version_info
 
 # ### Declaration and slicing
 
-# `str` is a built-in type representing a sequences of Unicode characters (bytes
-# in Python 2). Objects of `str` are immutable, hashable and iterable.
+# `str` is a built-in type representing a sequences of Unicode characters
+# (bytes in Python 2). Objects of `str` are immutable, hashable and iterable.
 
 # Single `'` and double `"` quotes are equivalent. I prefer single quotes but
 # when we have to use quote of some type as a symbol inside the string it is
