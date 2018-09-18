@@ -286,7 +286,8 @@ if sys.version_info[0] >= 3:
     try:
         sorted([-5, -3, 0, 7], abs, True)  # sort by absolute value
     except TypeError as e:
-        assert str(e) == 'sorted expected 1 arguments, got 3'
+        assert (str(e) == 'sorted expected 1 arguments, got 3'
+                or str(e) == 'must use keyword argument for key function')
 
 
 # ## Argument packing and unpacking
