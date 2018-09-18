@@ -41,7 +41,8 @@ The text could be long!
 ```
 
 ### Empty line
-Empty lines are empty text lines, not empty lines inside code blocks.
+Empty lines between comments are empty Markdown lines, and empty lines between code are empty code lines.
+This is important due Markdown syntax and [PEP8](http://pep8.org).
 
 ### Part of Markdown syntax inside text
 Text can contain little parts of Markdown syntax, it just shouldn't be cleaned.
