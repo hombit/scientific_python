@@ -1,13 +1,13 @@
 # Syntax proposal for `.py` files and its relation to Markdown syntax
 
 `.py` files under `scientific_python/` directory are valid Python 2/3 modules.
-These files are full of comments that uses Markdown-like syntax.
+These files are full of comments that use Markdown-like syntax.
 
 These is a syntax description, the least rules are more weighty, but the first rules are more general:
 
 ### Python code
 
-These strings start with any symbol except `#` and should be converted to code blocks.
+These lines start with any symbol except `#` and should be converted to code blocks.
 
 **Example**
 
@@ -24,7 +24,7 @@ print('Hello world')
 ````
 
 ### Text
-Text is located in comments that start with `# ` (with trailing space).
+Text is located in comment lines that start with `# ` (with trailing space).
 
 **Example**
 
@@ -45,7 +45,7 @@ Empty lines between comments are empty Markdown lines, and empty lines between c
 This is important due Markdown syntax and [PEP8](http://pep8.org).
 
 ### Part of Markdown syntax inside text
-Text can contain little parts of Markdown syntax, it just shouldn't be cleaned.
+Text can contain little parts of Markdown syntax, it just shouldn't be cleaned during transformation.
 
 **Example**
 
@@ -93,7 +93,7 @@ _Hello world_
 
 
 ### Commented code
-Sometimes it is useful to comment not working / bad style code. Such strings start with `# >>>` (with trailing space). In this case ` >>>` (with one of spaces) should be removed and string should be added to the surrounding code block.
+Sometimes it is useful to comment code that doesn't work or has a bad style. Such strings start with `# >>> ` (with trailing space). In this case ` >>>` (with one of the spaces) should be removed and string should be added to the surrounding code block.
 
 **Example**
 
