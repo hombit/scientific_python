@@ -281,7 +281,8 @@ if sys.version_info[0] >= 3:
 
 # Built-in functions also can have keyword-only arguments:
 if sys.version_info[0] >= 3:
-    assert '(iterable, /, *, key=None, reverse=False)' in signature(sorted)
+    assert ('(iterable, /, *, key=None, reverse=False)'
+            in str(signature(sorted)))
     try:
         sorted([-5, -3, 0, 7], abs, True)  # sort by absolute value
     except TypeError as e:
