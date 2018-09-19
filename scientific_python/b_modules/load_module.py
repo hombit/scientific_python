@@ -2,9 +2,9 @@
 
 from __future__ import division, print_function, unicode_literals
 
-# If this file is used as stand-alone module or script its __package__ variable
-# is `None` or empty string then import can be produced as usual. If the file is
-# used as package module, then we should use relative import.
+# If this file is used as stand-alone module or script its `__package__`
+# variable is `None` or empty string then import can be produced as usual. If
+# the file is used as package module, then we should use relative import.
 
 # Read simple_module.py first.
 if __package__:
