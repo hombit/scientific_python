@@ -5,20 +5,20 @@ from __future__ import division, print_function, unicode_literals
 import itertools
 
 
-# -- Some of built-in generators --
+# # Some of built-in generators
 
 # We have met some of built-in generators before, e.g. enumerate. Generators
-# are iterable but, instead of sequences, generators doesn't hold their values
+# are iterable but, instead of sequences, generators don't hold their values
 # but produce next value each time you ask them. After the last value is
-# produced generator cannot be asked for more values.
+# produced a generator raises exception when for more values.
 
-# for loop ##
+# `for` loop
 s = 'abc'
 for i, x in enumerate(s):
     assert x == s[i]
 
 
-# - next() -
+# # `next()`
 
 a = [5, 3]
 enum = enumerate(a)
@@ -32,15 +32,16 @@ except StopIteration:
     pass
 
 
-# -- Generator expression --
+# ## Generator expression
 
 a = (x**2 for x in range(10))  # generator
 for i, x in enumerate(a):
     assert i**2 == x
 
-a = [x**2 for x in range(10)]  # list
+# Also this syntax is named list comprehensive
+a = [x**2 for x in range(10)]
 assert isinstance(a, list)
-b = list(x**2 for x in range(10))  # same list
+b = list(x**2 for x in range(10))
 assert a == b
 
 a = {x**2 for x in range(10)}  # set
