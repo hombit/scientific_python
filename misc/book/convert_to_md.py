@@ -19,7 +19,6 @@ if my_code[0].startswith('#!'):
 
 for string in my_code:
     notprint = True
-
     if string.startswith('# >>>'):
         text = text + '\n' + string.replace('# >>>', '    #')
         notprint = False
