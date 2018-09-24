@@ -5,37 +5,36 @@ Created on Fri Sep  7 22:41:58 2018
 @author: aleksandra
 """
 
-file_name = 'name.py'
+file_name = 'sequences.py'
 
-my_file = open(file_name, 'r')
-my_code = my_file.readlines()
-my_file.close()
-
+with open(file_name, 'r', encoding='utf-8') as my_file:
+    my_code = my_file.readlines()
 
 text = ''
 code = False
 notprint = True
 
-if my_code[0][:2] == '#!':
+if my_code[0].startswith('#!'):
     my_code = my_code[1:]
 
-for string in (my_code):
+for string in my_code:
     notprint = True
-    if string[:5] == '# >>>':
-        text = text + '\n' + '    ' + string[:2] + string[5:]
+
+    if string.startswith('# >>>'):
+        text = text + '\n' + string.replace('# >>>', '    #')
         notprint = False
         continue
-    if string[:3] == '# `' and string[-2] == '`':
+    if string.startswith('# `') and string.endswith('`\n'):
         if code:
-            text = text + '\n ``` \n _' + string[3:-2] + '_ \n\n'
+            text = text + '\n ``` \n' + string.replace('# `', '_').replace('`', '_ \n')
         else:
-            text = text + '_' + string[3:-2] + '_ \n\n'
+            text = text + string.replace('# `', '_').replace('`', '_ \n')
         code = False
         notprint = False
         continue
-    if string[0] == '#':
+    if string.startswith('#'):
         if code and notprint:
-            while text[-1] == '\n':
+            while text.endswith('\n'):
                 text = text[:-1]
             text = text + '\n ``` \n'
             code = False
@@ -46,15 +45,11 @@ for string in (my_code):
         continue
     text = text + '\n ```python \n' + string
     code = True
-            
+
 if code:
-    text =  text + ' \n ``` \n'      
-    
-result_name = file_name[:-2] + 'md'    
-md = open(result_name,'w')
-md.write(text)
-md.close()
+    text = text + ' \n ``` \n'
 
+result_name = file_name[:-2] + 'md'
 
-    
-    
+with open(result_name, 'w', encoding='utf-8') as md:
+    md.write(text)
