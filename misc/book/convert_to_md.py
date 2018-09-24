@@ -5,7 +5,7 @@ Created on Fri Sep  7 22:41:58 2018
 @author: aleksandra
 """
 
-file_name = 'sequences.py'
+file_name = 'name.py'
 
 with open(file_name, 'r', encoding='utf-8') as my_file:
     my_code = my_file.readlines()
