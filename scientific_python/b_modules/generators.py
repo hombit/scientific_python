@@ -59,11 +59,11 @@ s = sum(x**2 for x in range(10))
 assert (n - 1) * n * (2*n - 1) / 6 == s
 
 
-# -- Generator --
+# # Generator
 
-# - Short example -
+# ## Short example
 
-# Infinite generator from PEP 255
+# Infinite generator from PEP 255:
 
 
 def fib():
@@ -75,12 +75,12 @@ def fib():
 
 assert (1, 1, 2, 3, 5) == tuple(itertools.islice(fib(), 5))
 
-# - yield -
+# ## `yield` statement
 
-# When you call for the next value of a generator, it works until "yield"
+# When you call for the next value of a generator, it works until `yield`
 # statement and yields some value. When you need next value the generator
 # remembers its state and continues just from the places it previously yields.
-# Generator yields its values until the end of the block or until "return"
+# Generator yields its values until the end of the block or until `return`
 # statement.
 
 
