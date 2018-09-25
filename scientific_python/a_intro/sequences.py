@@ -1,24 +1,28 @@
 #!/usr/bin/env python3
 # Make this file executable
-# $ chmod +x strings.py
+#
+# $ chmod +x sequences.py
+#
 # Now you can start it just by name:
-# $ ./strings.py
-# Pay attention to write /usr/bin/env instead of a direct path to you python
-# interpreter. This path can vary from system to system and when virtualenv is
-# used.
+#
+# $ ./sequences.py
+#
+# Pay attention to write `/usr/bin/env` instead of a direct path to you python
+# interpreter. This path can vary from system to system and when `virtualenv`
+# is used.
 
 from __future__ import division, print_function
 
 
-# ## list
+# ## List
 
-# ### "[]" operator
+# ### `[]` operator
 
 # Empty list
 a = []
 a = list()
 
-# list is a collection of various elements that could be and could be not
+# `list` is a collection of various elements that could be and could be not
 # objects of the same type. List could be initialized using "[]" operator:
 a = [1, 2.3, 4.3, -1 + 3.5j]
 print(a)  # [1, 2.3, 4.3, -1+3.5j]
@@ -305,7 +309,7 @@ print(a, b)  # 1 2
 a, b = b, a
 print(a, b)  # 2 1
 
-# Use `_ variable to skip one of the values:
+# Use `_` variable to skip one of the values:
 a, _, b = t
 print(a, b)  # 1 3
 # Variable `_` is a normal Python variable name, but usually this variable is
