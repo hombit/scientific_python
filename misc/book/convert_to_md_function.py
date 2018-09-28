@@ -4,7 +4,6 @@ Created on Fri Sep  28 20:01:12 2018
 
 @author: aleksandra
 """
-import argparse
 
 
 def convert(file_name):
@@ -56,7 +55,4 @@ def convert(file_name):
     result_name = file_name[:-2] + 'md'
     
     with open(result_name, 'w', encoding='utf-8') as md:
-        md.write(text)
-
-       
-        
+        md.write(text)   
