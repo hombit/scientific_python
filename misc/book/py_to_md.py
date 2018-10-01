@@ -19,4 +19,3 @@ for name in filenames:
         convert(name)
     except Exception:
         print('{} was not converted'.format(name))
-
