@@ -8,28 +8,25 @@ Created on Fri Sep  28 20:01:12 2018
 
 def convert(file_name):
     '''
-    Convert python script to Markdown 
+    Convert python script to Markdown
     '''
     with open(file_name, 'r', encoding='utf-8') as my_file:
         my_code = my_file.readlines()
-    
     text = ''
     code = False
     notprint = True
-    
     if my_code[0].startswith('#!'):
         my_code = my_code[1:]
-    
     for string in my_code:
         notprint = True
-    
         if string.startswith('# >>>'):
             text = text + '\n' + string.replace('# >>>', '    #')
             notprint = False
             continue
         if string.startswith('# `') and string.endswith('`\n'):
             if code:
-                text = text + '\n ``` \n' + string.replace('# `', '_').replace('`', '_ \n')
+                text = (text + '\n ``` \n'
+                             + string.replace('# `', '_').replace('`', '_ \n'))
             else:
                 text = text + string.replace('# `', '_').replace('`', '_ \n')
             code = False
@@ -48,11 +45,8 @@ def convert(file_name):
             continue
         text = text + '\n ```python \n' + string
         code = True
-    
     if code:
         text = text + ' \n ``` \n'
-    
     result_name = file_name[:-2] + 'md'
-    
     with open(result_name, 'w', encoding='utf-8') as md:
-        md.write(text)   
+        md.write(text)
