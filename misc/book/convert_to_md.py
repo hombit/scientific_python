@@ -25,7 +25,8 @@ for string in my_code:
         continue
     if string.startswith('# `') and string.endswith('`\n'):
         if code:
-            text = text + '\n ``` \n' + string.replace('# `', '_').replace('`', '_ \n')
+            text = (text + '\n ``` \n'
+                         + string.replace('# `', '_').replace('`', '_ \n'))
         else:
             text = text + string.replace('# `', '_').replace('`', '_ \n')
         code = False
