@@ -8,7 +8,7 @@ import numpy as np  # this is a common alias from numpy documentation
 from numpy.testing import assert_allclose, assert_array_equal
 
 # `numpy` is a linear algebra library written primarily on `C`:
-# <http://numpy.org>. `numpy` is a part of [SciPy](https://SciPy.org) 
+# <http://numpy.org>. `numpy` is a part of [SciPy](https://SciPy.org)
 # ecosystem that includes other useful scientific packages such as `scipy`,
 # `IPython`, `pandas` and `matplotlib`.
 
@@ -104,8 +104,8 @@ assert np.issubdtype(a.dtype, np.object)
 
 # All of four last functions (`empty`, `zeros`, `ones`, `full`) have `*_like`
 # companions that help produce array of the same size (better said shape, the
-# `tuple` attribute described size of the multidimensional array along each axis,
-# we will describe shapes soon) and dtype.
+# `tuple` attribute described size of the multidimensional array along each
+# axis we will describe shapes soon) and dtype.
 a = np.arange(10, dtype=np.uint32)
 b = np.ones_like(a)
 assert len(a) == len(b)
