@@ -2,33 +2,33 @@
 
 from __future__ import division, print_function
 
-from timeit import timeit
+from timeit import timeit  # we need it for performance tests
 
 import numpy as np  # this is a common alias from numpy documentation
 from numpy.testing import assert_allclose, assert_array_equal
 
-# `numpy` is a linear algebra library for python written primarily on C
-# https://numpy.org `numpy` is a part of SciPy ecosystem that includes other
-# useful packages for science programming such as `scipy`, `IPython`, `pandas`
-# and `matplotlib`.
+# `numpy` is a linear algebra library written primarily on `C`:
+# <http://numpy.org>. `numpy` is a part of [SciPy](https://SciPy.org) 
+# ecosystem that includes other useful scientific packages such as `scipy`,
+# `IPython`, `pandas` and `matplotlib`.
 
 # The kernel of `numpy` is `ndarray` class that implements multidimensional
-# array of one-type objects. These arrays have constant size and their elements
-# cannot be converted into another type in-place.
+# array of the same type objects. These arrays have constant size and their
+# elements cannot be converted into another type in-place.
 
-# One more remark before we start. Do not be confounded by `array` module of
-# standard library https://docs.python.org/3/library/array.html that contains
-# class `array.array` is very similar to list except that all its elements
+# One more remark before we start. Do not be confounded by [`array` module of
+# standard library](https://docs.python.org/3/library/array.html) that contains
+# class `array.array` very similar to `list` except that all its elements
 # should have one type.
 
-# This part will be a summary of `numpy` tutorial:
-# https://docs.scipy.org/doc/numpy/user/quickstart.html
+# This section is a summary of `numpy` tutorial:
+# <http://docs.scipy.org/doc/numpy/user/quickstart.html>
 # If you are a fan of Matlab see also:
-# https://docs.scipy.org/doc/numpy/user/numpy-for-matlab-users.html
+# <http://docs.scipy.org/doc/numpy/user/numpy-for-matlab-users.html>
 
-# -- Array construction --
+# # Array construction
 
-# - np.array -
+# ## np.array
 # You don't need to construct ndarray manually, use instead one of construction
 # functions. The main one is `array`:
 a = np.array([0, 1, 2, 3, 4])
@@ -36,7 +36,7 @@ a = np.array(range(5))
 
 a = np.array([0, 1, 2, 3, 4], dtype=np.uint8)
 a[0] = -1
-# numpy numerical types are close related to C's types:
+# numpy numerical types are close related to `C` types:
 assert a[0] == 255
 # Long types are implemented on some 64bit systems:
 try:
@@ -47,7 +47,7 @@ try:
 except AttributeError as e:
     assert str(e) == "module 'numpy' has no attribute 'float128'"
 
-# - Implicit type conversion -
+# ## Implicit type conversion
 a = np.array([1, 2, 3, 4], dtype=np.int)
 a[0] = 5.5  # implicit type conversion as in C
 assert a[0] == 5
@@ -57,11 +57,11 @@ try:
     assert False
 except TypeError as e:
     assert str(e).startswith("can't convert complex to")
-    # "... to int" in py3, "... to long" in py2
+    # "... to int" in Python 3, "... to long" in Python 2
 
-# - Creation functions -
+# ## Creation functions
 
-# `np.arange` is `numpy` analogue of built-in `range` function:
+# `np.arange` is `numpy` analogue of built-in `range`:
 a = np.arange(5)
 assert_array_equal(a, np.array(range(5)))
 sl = (3, 30, 2)
@@ -102,10 +102,10 @@ a = np.full(10, x)
 assert_array_equal(a, x)
 assert np.issubdtype(a.dtype, np.object)
 
-# All of four last functions (empty, zeros, ones, full) have *_like companion
-# that helps produce array of the same size (better said shape, the tuple
-# attribute described size of the multidimensional array along each axis, we
-# will describe shapes soon) and dtype.
+# All of four last functions (`empty`, `zeros`, `ones`, `full`) have `*_like`
+# companions that help produce array of the same size (better said shape, the
+# `tuple` attribute described size of the multidimensional array along each axis,
+# we will describe shapes soon) and dtype.
 a = np.arange(10, dtype=np.uint32)
 b = np.ones_like(a)
 assert len(a) == len(b)
@@ -125,12 +125,12 @@ assert a.dtype == b.dtype
 assert np.all(b == np.floor(x))
 
 
-# -- Array view and slicing --
+# # Array view and slicing
 
-# - list-like indexing -
+# ## list-like indexing
 
-# numpy arrays can be sliced just like built-in python sequenses: list, str or
-# tuple:
+# numpy arrays can be sliced just like built-in python sequenses: `list`, `str`
+# or `tuple`:
 a = np.arange(10)
 x = 5
 assert x == a[x]  # index and value of the `a` are the same
