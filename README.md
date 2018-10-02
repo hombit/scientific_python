@@ -74,9 +74,12 @@ iOS doesn't have any application to use for scientific programming. The best cho
 
 Classes have place in classroom 48 of Sternberg Astronomical Institute MSU at 9:30 on Wednesdays from September to December 2018.
 
-Date | Description | Materials | Video (in Russian)
----- | ----------- | --------- | ------------------
-2018.09.05 | Introduction | [`a_intro.basics`](./scientific_python/a_intro/basics.py), [`a_intro.sequences`](./scientific_python/a_intro/sequences.py) (the first part about lists) | [link](https://youtu.be/yN5__ZYKeOE)
+Date | Description | Materials | Links | Video (in Russian)
+---- | ----------- | --------- | ----- | ------------------
+2018.09.05 | Introduction, coursework requirements. About Python. Numbers, lists, if-else, while, Boolean variables | [`a_intro.basics`](./scientific_python/a_intro/basics.py), [`a_intro.sequences`](./scientific_python/a_intro/sequences.py) (the first part about lists) | [Python documentation](https://docs.python.org/), see more above | [link](https://youtu.be/yN5__ZYKeOE)
+2018.09.12 | Built-in collections: tuples, dictionaries, sets. for-in, in. | [`a_intro.sequences`](./scientific_python/a_intro/sequences.py) | [Iteration](https://opensource.com/article/18/3/loop-better-deeper-look-iteration-python), ["Hash table" Wikipedia article](https://en.wikipedia.org/wiki/Hash_table) | [link]()
+2018.09.19 | Strings: unicode and formating. Functions: functions as objects, lambdas, argument packing and unpacking | [`a_intro.strings`](./scientific_python/a_intro/strings.py), [`b_modules.functions`](./scientific_python/b_modules/functions.py), [`b_modules.functions`](./scientific_python/b_modules/functions.py), [dump of iPython session](./misc/jupyter_notebooks/18.09.19/ipython_notes.py) | [String formating](https://pyformat.info) (use "new" syntax), [keyword arguments](http://treyhunner.com/2018/04/keyword-arguments-in-python) | [link]()
+
 
 # Classes materials (2017)
 
