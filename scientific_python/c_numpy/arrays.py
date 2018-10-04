@@ -242,7 +242,7 @@ for n in np.logspace(2, 6, 3, dtype=np.int):
     )
     assert t_for > t_bench
 
-# - Indexing array -
+# ## Indexing array
 
 # ndarray can be indexed in some more ways than built-in python collections.
 # One of these ways is indexing array: ndarray or list (but not tuple!) with
@@ -265,7 +265,7 @@ a = np.zeros(2)
 a[[0, 0, 0, 0]] += 1
 assert_array_equal(a, [1, 0])
 
-# - Mask (boolean) index -
+# ## Mask (boolean) index
 
 # One more type of index that doesn't work for built-in collections is mask (or
 # boolean) index. This is a ndarray (or a list, not a tuple) of boolean
