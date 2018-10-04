@@ -2,6 +2,7 @@
 
 from __future__ import division, print_function
 
+from io import StringIO  # text stream class
 from timeit import timeit  # we need it for performance tests
 
 import numpy as np  # this is a common alias from numpy documentation
@@ -67,7 +68,7 @@ assert_array_equal(a, np.array(range(5)))
 sl = (3, 30, 2)
 assert_array_equal(np.arange(*sl), np.array(range(*sl)))
 
-# Instead of `range` `np.arange` accept float arguments:
+# Instead of `range` `np.arange` accepts float arguments:
 assert_array_equal(np.arange(3.5), np.array(range(4)))
 assert_allclose(np.arange(0, 1, 0.25), [0., 0.25, 0.5, 0.75])
 # However you should avoid to use `np.arange` with float steps, because of
@@ -110,18 +111,18 @@ a = np.arange(10, dtype=np.uint32)
 b = np.ones_like(a)
 assert len(a) == len(b)
 assert a.shape == b.shape
-assert a.dtype == b.dtype
+assert a.dtype is b.dtype
 assert_array_equal(b, 1)
 # dtype of new array can differ from original:
 b = np.zeros_like(a, dtype=np.float)
 assert a.shape == b.shape
-assert a.dtype != b.dtype
+assert a.dtype is not b.dtype
 assert_array_equal(b, 0)
 x = np.pi
 # pi will be rounded to 3, because dtype=np.uint32:
 b = np.full_like(a, x)
 assert a.shape == b.shape
-assert a.dtype == b.dtype
+assert a.dtype is b.dtype
 assert np.all(b == np.floor(x))
 
 
@@ -129,24 +130,24 @@ assert np.all(b == np.floor(x))
 
 # ## list-like indexing
 
-# numpy arrays can be sliced just like built-in python sequenses: `list`, `str`
+# `numpy` arrays can be sliced just like built-in sequences: `list`, `str`
 # or `tuple`:
 a = np.arange(10)
 x = 5
 assert x == a[x]  # index and value of the `a` are the same
 assert_array_equal(a[2:8], np.arange(2, 8))
 
-# Instead of regular python behaviour, numpy such slices does not copy elements
-# but produces new ndarray that is a view of the original one.
+# Instead of builtins' behaviour, such slices of `ndarray` does not copy
+# elements but produces new `ndarray` that is a view of the original one.
 # First, let's remember list's behaviour:
 li = list(range(10))
 li_slice = li[:5]
 li_slice[:] = [-1]*5  # replace all elements
 assert_array_equal(li_slice, -1)
-assert_array_equal(li[:5], list(range(5)))  # original list haven't changed
+assert_array_equal(li[:5], list(range(5)))  # original list hasn't been changed
 assert li[:5] != li_slice
 
-# But, ndarray's behaviour is different:
+# But, `ndarray`'s behaviour is different:
 a = np.arange(10)
 a_slice = a[:5]
 assert a_slice.shape == (5,)
@@ -155,19 +156,19 @@ assert_array_equal(a[:5], a_slice, -1)
 # We can check that `a_slice` is just a view and doesn't own its elements:
 assert not a_slice.flags.owndata
 assert a.flags.owndata
-# .base attribute for views provides access to original data for views and is
-# None for ndarrays that owns their data:
+# .base attribute for views provides access to original data and it is `None`
+# for `ndarrays` that owns their data:
 assert a.base is None
 assert_array_equal(a_slice.base, a)
 
-# Index access of 1-D ndarray returns an element, not view
+# Index access of 1-D `ndarray` returns an element, not view
 a = np.arange(10, dtype=np.int)
 x = a[0]  # is a number, not view of `a`
 x += 1
 assert x != a[0]  # original array doesn't changed
 assert x.flags.owndata
 assert np.issubdtype(x.dtype, np.int)
-assert x.shape == ()  # numpy's numbers have empty shape
+assert x.shape == ()  # `numpy`'s numbers have empty shape
 
 # If you'd like to produce 1-element view then use slice:
 b = a[0:1]  # is a view with one element
@@ -177,10 +178,10 @@ assert not b.flags.owndata
 assert np.issubdtype(x.dtype, np.int)
 assert b.shape == (1,)
 
-# If you'd like to make view on all the array, than use empty slice ":":
+# If you'd like to make view on all the array, than use empty slice `:`:
 a = np.arange(10, dtype=np.int)
 b = np.zeros_like(a, dtype=np.float)
-b[:] = a  # copies `a`'s elements into b and convert their type
+b[:] = a  # copies `a`'s elements into `b` and convert their type
 assert_array_equal(a, b)
 assert b.flags.owndata
 assert np.issubdtype(b.dtype, np.float)
@@ -194,7 +195,8 @@ assert_array_equal(c, d)
 # object:
 assert d.flags.owndata
 
-# Elements of the array can be modified in-place using "+=", "*=", etc:
+# Elements of the array can be modified in-place using operators operators
+# `+=`, `*=`, etc:
 a = np.arange(10)
 b = a
 a += 1
@@ -202,7 +204,7 @@ assert a is b  # `a` still is the same object, compare with tuple/str behaviour
 assert_array_equal(a, b)
 assert_array_equal(b, np.arange(1, 11))
 
-# But "+", "-", "*", etc create new objects:
+# But `+`, `-`, `*`, etc create new objects:
 a = np.arange(10)
 b = a
 a = a + 1  # `a` is replaced with the new object
@@ -222,7 +224,7 @@ a = np.ones(10)
 a[::2] = 0
 assert_array_equal(a, np.arange(10) % 2)
 
-# You should avoid to iterate ndarray (e.g. in for-loop), because numpy
+# You should avoid to iterate `ndarray` (e.g. in `for`-loop), because `numpy`
 # benches operations over array's elements and make them much faster together
 # than one by one.
 for n in np.logspace(2, 6, 3, dtype=np.int):
@@ -242,21 +244,21 @@ for n in np.logspace(2, 6, 3, dtype=np.int):
     )
     assert t_for > t_bench
 
-# - Indexing array -
+# ## Indexing array
 
-# ndarray can be indexed in some more ways than built-in python collections.
-# One of these ways is indexing array: ndarray or list (but not tuple!) with
-# integer elements that are used as indices of target array.
+# `ndarray` can be indexed in some more ways than built-in python collections.
+# One of these ways is indexing array: `ndarray` or `list` (but not `tuple`)
+# with integer elements that are used as indices of target array.
 a = np.arange(10)
 index = [5, 1, 3, 1, 2]
 assert_array_equal(a[index], index)
 
-# Indexing array copies data to new ndarray (see exception bellow):
+# Indexing array copies data to new `ndarray` (see exception bellow):
 a = np.arange(10)
 a_copy = a.copy()
 c = a[index]
 c[:] = 0
-assert_array_equal(a, a_copy)  # original array hasn't changed
+assert_array_equal(a, a_copy)  # original array hasn't been changed
 # But indexing arrays can be used to change elements in-place:
 a[index] += 1
 assert not np.all(a == a_copy)  # a has been changed
@@ -265,12 +267,12 @@ a = np.zeros(2)
 a[[0, 0, 0, 0]] += 1
 assert_array_equal(a, [1, 0])
 
-# - Mask (boolean) index -
+# ## Mask (Boolean) index
 
 # One more type of index that doesn't work for built-in collections is mask (or
-# boolean) index. This is a ndarray (or a list, not a tuple) of boolean
-# elements: True means that element with the same index from target array will
-# be included and vice versa:
+# Boolean) index. This is a `ndarray` (or a `list`, not a `tuple`) of Boolean
+# elements: `True` means that element with the same index from the target array
+# will be included and vice versa:
 a = np.arange(10)
 index = (a % 2) == 0
 b = a[index]
@@ -288,3 +290,21 @@ a[index] = 0  # replace all negative elements by zero
 assert np.all(a >= 0)
 a[a > 0] = 0  # replace all positive elements by zero
 assert_array_equal(a, 0)
+
+
+
+# # Mathematical functions
+
+# ## Look for 
+
+# `numpy` has several hundreds of various functions. How can you find what you
+# need? The good start point is `numpy` documentation: 
+# <http://docs.scipy.org/doc/numpy/reference/index.html>
+# Another option is a usage of `np.lookfor()` interactive function that helps
+# you to find function by its documentation. By default, it operates like
+# built-in `help()` and show you an interactive page of results, type "q" to
+# quit.
+s = StringIO()  # we need it to output results in non-interactive mode
+np.lookfor('sort', output=s)
+s.seek(0)  # move cursor to the start of the stream
+assert s.read().startswith("Search results for 'sort'")
