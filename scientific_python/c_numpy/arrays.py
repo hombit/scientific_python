@@ -292,13 +292,12 @@ a[a > 0] = 0  # replace all positive elements by zero
 assert_array_equal(a, 0)
 
 
-
 # # Mathematical functions
 
-# ## Look for 
+# ## Look for
 
 # `numpy` has several hundreds of various functions. How can you find what you
-# need? The good start point is `numpy` documentation: 
+# need? The good start point is `numpy` documentation:
 # <http://docs.scipy.org/doc/numpy/reference/index.html>
 # Another option is a usage of `np.lookfor()` interactive function that helps
 # you to find function by its documentation. By default, it operates like
