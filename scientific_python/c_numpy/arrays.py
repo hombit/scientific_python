@@ -2,7 +2,6 @@
 
 from __future__ import division, print_function
 
-from io import StringIO  # text stream class
 from timeit import timeit  # we need it for performance tests
 
 import numpy as np  # this is a common alias from numpy documentation
@@ -303,7 +302,4 @@ assert_array_equal(a, 0)
 # you to find function by its documentation. By default, it operates like
 # built-in `help()` and show you an interactive page of results, type "q" to
 # quit.
-s = StringIO()  # we need it to output results in non-interactive mode
-np.lookfor('sort', output=s)
-s.seek(0)  # move cursor to the start of the stream
-assert s.read().startswith("Search results for 'sort'")
+# >>> np.lookfor('sort', output=s)
