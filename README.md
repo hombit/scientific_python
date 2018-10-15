@@ -59,7 +59,6 @@ iOS doesn't have any application to use for scientific programming. The best cho
 
 ## Dive into Python
 - [Learn Python in Y minutes](http://learnxinyminutes.com/python3/): short and deep language tutorial. This tutorial has [Russian version](https://learnxinyminutes.com/docs/ru-ru/python3-ru/)
-- [Dive into Python](http://www.diveintopython.net/index.html): old but still good Python handbook
 - [Official Python tutorial](https://docs.python.org/3/tutorial/)
 - [Python for astronomers](https://python4astronomers.github.io)
 - [Python 3 in one picture](https://fossbytes.com/wp-content/uploads/2015/09/python-3-in-one-pic.png): print it and enjoy
