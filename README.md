@@ -63,6 +63,7 @@ iOS doesn't have any application to use for scientific programming. The best cho
 - [Python for astronomers](https://python4astronomers.github.io)
 - [Python 3 in one picture](https://fossbytes.com/wp-content/uploads/2015/09/python-3-in-one-pic.png): print it and enjoy
 - [Use of Python programming language in astronomy and science](https://arxiv.org/abs/1807.04806)
+- [WTF Python](https://github.com/satwikkansal/wtfpython)
 
 ## General documentation
 - [Zen of Python](http://pep20.prg) or just run `import this` in Python
@@ -80,6 +81,7 @@ Date | Description | Materials | Links | Video (in Russian)
 2018.09.19 | Strings: unicode and formating. Functions: functions as objects, lambdas, argument packing and unpacking | [`a_intro.strings`](./scientific_python/a_intro/strings.py), [`b_modules.functions`](./scientific_python/b_modules/functions.py), [dump of iPython session](./misc/jupyter_notebooks/18.09.19/ipython_notes.py) | [String formating](https://pyformat.info) (use "new" syntax), [keyword arguments](http://treyhunner.com/2018/04/keyword-arguments-in-python) | [link](https://www.youtube.com/watch?v=W-tjVzoZphc&t=2943s)
 2018.09.26 | Some more details about strings: methods and `re`. Generators, list comprehance syntax. Python source file as module, import system. Introduction to classes. | [`b_modules`](./scientific_python/b_modules/), [`*.py`](./misc/jupyter_notebooks/18.09.26) files used on seminar | [Regular expressions (in Russian)](https://habr.com/post/349860/), [iteration and generators](https://opensource.com/article/18/3/loop-better-deeper-look-iteration-python), [scope and namespaces](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html), [modules](https://realpython.com/python-modules-packages/) | [link](https://www.youtube.com/watch?v=v1ryYXkfDHQ)
 2018.10.03 | Jupyter notebook: a good way to use Python and another languages. Introduction in `numpy` | [`c_numpy.arrays`](./scientific_python/c_numpy/arrays.py), [Jupyter notebook](https://github.com/hombit/scientific_python/blob/master/misc/jupyter_notebooks/18.10.03/numpy-arrays.ipynb) | [Jupyter website](http://jupyter.org), [Jupyter guide](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook), [`numpy` user guide](https://docs.scipy.org/doc/numpy/user/) | [link](https://www.youtube.com/watch?v=BWJP40Hp5Tc)
+2018.10.10 | Multidimensional arrays in `numpy`: reshaping, broadcasting, stacking. Review of `numpy` subpackages | [`c_numpy`](./scientific_python/c_numpy/), [Kupyter notebook](https://github.com/hombit/scientific_python/blob/master/misc/jupyter_notebooks/18.10.10/multidim-arrays.ipynb) | [`numpy` user guide](https://docs.scipy.org/doc/numpy/user/), ["An introduction to Numpy and Scipy"](https://engineering.ucsb.edu/~shell/che210d/numpy.pdf) | [link](https://youtu.be/jnjE93pfusk)
 
 
 # Classes materials (2017)
