@@ -16,3 +16,4 @@ script:
   - sci_py_import_all
   - python setup.py test
   - sci_py_test_style .
+  - python ./misc/sample_project/setup.py test
