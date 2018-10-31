@@ -7,7 +7,7 @@ from setuptools import find_packages, setup, Extension
 import os
 import glob
 
-packagename='scientific_python'
+packagename = 'scientific_python'
 
 # Cython related
 try:
@@ -29,20 +29,27 @@ except ImportError:
 here = os.path.abspath(os.path.dirname(__file__))
 
 with open(os.path.join(here, 'requirements.txt')) as f:
-    install_requires=f.read().splitlines()
+    install_requires = f.read().splitlines()
+
+description = """
+Materials for Scientific Python course for astronomy students of
+Moscow University
+""".replace('\n', ' ')
 
 setup(
     name=packagename,
-    version='0.2.0',
+    version='0.2.1',
     url='http://homb.it/sci_py/',
     license='MIT',
     author='Konstantin Malanchev',
     author_email='malanchev@physics.msu.ru',
-    description='Package with materials for Scientific Python course for astronomers in Moscow University',
+    description=description,
     packages=find_packages(),
-    # If you have only one Python module use `py_modules` instead of `packages`:
+    # If you have only one Python file use `py_modules` instead of `packages`:
     # py_modules=['mymodule'],
-    scripts=['bin/sci_py_example', 'bin/sci_py_import_all', 'bin/sci_py_test_style'],
+    scripts=['bin/sci_py_example',
+             'bin/sci_py_import_all',
+             'bin/sci_py_test_style'],
     ext_modules=ext_modules,  # for Cython
     data_files=[
         ('doc',  ['doc/course_abstract.docx']),
