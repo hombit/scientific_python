@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
+
 def is_snake(word):
     if not word.isalpha():
         raise ValueError("String '{}' is not a word")
