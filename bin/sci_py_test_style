@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import fnmatch
 import glob
 import os
 from itertools import chain
@@ -24,12 +25,14 @@ def check_style(fpath):
 
 
 def package_files(package_dir):
-    def path(ext):
-        return os.path.join(package_dir, '**/*'+ext)
+    # It would be better to use glob.iglob('**/*.py', recursive=True) but it
+    # isn't available before Python 3.5
+    def fpath_gen(ext):
+        for root, dirnames, filenames in os.walk(package_dir):
+            for filename in fnmatch.filter(filenames, '*'+ext):
+                yield os.path.join(root, filename)
 
-    fpaths = list(chain.from_iterable(
-        (glob.iglob(path(ext), recursive=True) for ext in EXTS)
-    ))
+    fpaths = list(chain.from_iterable(fpath_gen(ext) for ext in EXTS))
     setup_py = os.path.join(package_dir, '../setup.py')
     fpaths.append(setup_py)
     return fpaths
