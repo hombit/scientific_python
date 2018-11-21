@@ -72,7 +72,7 @@ iOS doesn't have any application to use for scientific programming. The best cho
 
 # Classes materials (2018)
 
-Classes have place in classroom 48 of Sternberg Astronomical Institute MSU at 9:00 on Wednesdays from September to December 2018.
+Classes have place in classroom 48 of Sternberg Astronomical Institute MSU at 9:00 on Wednesdays from September to December 2018. Development of the course in 2018 is supported by [BASIS foundation](https://basis-foundation.ru/en/).
 
 Date | Description | Materials | Links | Video (in Russian)
 ---- | ----------- | --------- | ----- | ------------------
