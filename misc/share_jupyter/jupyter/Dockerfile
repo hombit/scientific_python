@@ -3,12 +3,13 @@ FROM jupyter/minimal-notebook
 
 # Install required Python packages
 RUN conda install --yes astropy astroquery matplotlib numpy scipy pandas \
-    lmfit scikit-learn pillow scikit-image requests photutils cython numba
+    lmfit scikit-learn pillow scikit-image requests photutils cython \
+    numba keras tensorflow requests beautifulsoup4 flask
 
-# Install TeX related Ubuntu packages
+# Install TeX and ffmpeg for matplotlib
 USER root
 RUN apt-get update && \
-    apt-get install -y texlive-lang-cyrillic dvipng && \
+    apt-get install -y texlive-lang-cyrillic dvipng ffmpeg && \
     apt-get clean -y &&\
     rm -rvf /var/lib/apt/lists/* &&\
     truncate -s 0 /var/log/*log

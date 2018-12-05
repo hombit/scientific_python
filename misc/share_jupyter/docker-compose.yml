@@ -2,27 +2,35 @@ version: '3.1'
 services:
   jupyter:
     build: ./jupyter/
+    ports:
+      - "5000:5000"
     volumes:
       - work:/home/jovyan/work
+    networks:
+      - jupyter
     restart: always  
   
   proxy:
-    build: ./proxy/
+    build: ./proxy_for_proxy/
     volumes:
-      - ssl:/etc/dhparams/
-      - ssl:/etc/letsencrypt
       - work:/home/jovyan/work:ro
-    ports:
-      - "80:80"
-      - "443:443"
     environment:
-      - TZ=Europe/Moscow
-      - LE_EMAIL=the@homb.it
-      - NGINX_HOST=sai.homb.it
+      VIRTUAL_HOST: sai.homb.it
+      DYNDNS_HOST: sai.homb.it
+      LETSENCRYPT_HOST: sai.homb.it
+      LETSENCRYPT_EMAIL: sai@homb.it
+    networks:
+      - jupyter
+      - proxy
     depends_on:
       - jupyter
     restart: always  
 
 volumes:
-  ssl:
   work:
+
+networks:
+  jupyter:
+  proxy:
+    external:
+      name: proxy
