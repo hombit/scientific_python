@@ -19,6 +19,7 @@ This repository has a structure of [a Python package](https://packaging.python.o
  - [`bin`](./bin/) folder contains scripts that can be used after package installation. Now they are used for testing
  - [`doc`](./doc/) folder is used for documentation. Now it contains only MS Word file with course annotation (in Russian)
  - [`misc`](./misc/) contains two sub-folders related to [`Juyter`](http://jupyter.org) notebooks used in class:
+   - [`sample_project`](./misc/sample_project/) is an example of very basic Python project with `setup.py`, a package and a subpackage, tests and a script. Students can use it as a base for their course projects
    - [`jupyter_notebooks`](./misc/jupyter_notebooks/) contains notebooks and other files used in class sorted by date
    - [`share_jupyter`](./misc/share_jupyter/) contains little [`Docker`](http://docker.com) project that runs my class `Jupyter` server and exposes notebook `HTML` copies to the world on [sai.homb.it](http://sai.homb.it/)
  - [`setup.py`](./setup.py) is used to install this package
