@@ -60,10 +60,12 @@ iOS doesn't have any application to use for scientific programming. The best cho
 ## Dive into Python
 - [Learn Python in Y minutes](http://learnxinyminutes.com/python3/): short and deep language tutorial. This tutorial has [Russian version](https://learnxinyminutes.com/docs/ru-ru/python3-ru/)
 - [Official Python tutorial](https://docs.python.org/3/tutorial/)
+- [A Byte of Python](https://python.swaroopch.com): a free handbook with initial language tutorial, [there is an unofficial but still good Russian translation](https://wombat.org.ua/AByteOfPython/toc.html)
 - [Python for astronomers](https://python4astronomers.github.io)
 - [Python 3 in one picture](https://fossbytes.com/wp-content/uploads/2015/09/python-3-in-one-pic.png): print it and enjoy
+- [Comprehensive Python Cheatsheet](https://gto76.github.io/python-cheatsheet/)
 - [Use of Python programming language in astronomy and science](https://arxiv.org/abs/1807.04806)
-- [WTF Python](https://github.com/satwikkansal/wtfpython)
+- [WTF Python](https://github.com/satwikkansal/wtfpython): non-obvious language features
 
 ## General documentation
 - [Zen of Python](http://pep20.prg) or just run `import this` in Python
