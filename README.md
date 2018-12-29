@@ -11,18 +11,19 @@ and asserts work.
 
 # Repository structure
 
-This repository has a structure of [a Python package](https://packaging.python.org/tutorials/distributing-packages/) with some additional files:
+This repository has a structure of [a Python package](https://packaging.python.org/tutorials/distributing-packages/) with some additional files.
  - [`scientific_python`](./scientific_python/) folder represents top level package of the same name. This package contains
    several sub-packages and modules. You can start with [`a_intro`](./scientific_python/a_intro) sub-package and read its 
    modules one by one in alphabetical order. All modules can be used as separate modules and scripts without package
    installation
  - [`bin`](./bin/) folder contains scripts that can be used after package installation. Now they are used for testing
  - [`doc`](./doc/) folder is used for documentation. Now it contains only MS Word file with course annotation (in Russian)
- - [`misc`](./misc/) contains two sub-folders related to [`Juyter`](http://jupyter.org) notebooks used in class:
+ - [`misc`](./misc/) contains some additional course materials, e.g. sample Python project and staff related to [`Juyter`](http://jupyter.org) notebooks used in class:
+   - [`sample_project`](./misc/sample_project/) is an example of basic Python project with `setup.py`, a package and a subpackage, tests and a script. Students can use it as a base for their course projects
    - [`jupyter_notebooks`](./misc/jupyter_notebooks/) contains notebooks and other files used in class sorted by date
    - [`share_jupyter`](./misc/share_jupyter/) contains little [`Docker`](http://docker.com) project that runs my class `Jupyter` server and exposes notebook `HTML` copies to the world on [sai.homb.it](http://sai.homb.it/)
  - [`setup.py`](./setup.py) is used to install this package
- - [`requirements.txt`](./requirements.txt) file contains Python dependencies of the project.
+ - [`requirements.txt`](./requirements.txt) file contains Python dependencies of the project
  - [`virtualenv_activation.sh`](./virtualenv_activation.sh) is a sample shell script (for \*nix systems only) that can be used to activate [`virtualenv`](https://virtualenv.pypa.io/) and install the package. Use it by typing `. virtualenv_activation.sh` or `source virtualenv_activation.sh`. For exit virtualenv type `deactivate`
  - [`Dockerfile`](./Dockerfile) and [`docker-compose.yml`](./docker-compose.yml) files can be used to run the project inside [`Docker`](http://docker.com) container
  - [`.gitignore`](./.gitignore) and [`.gitattributes`](.gitattributes) are [`git`](https://git-scm.com)  files
@@ -37,16 +38,16 @@ Remember to use Python 3, 3.6 and later is good enough in 2018. You can check py
 
 ### All platforms
 - [Anaconda Python distribution](https://www.anaconda.com/download/) is a good choice for scientific Python programming on every platform. It includes a lot of pre-compiled numerical and scientific packages and `conda` package manager where you can find even more packages, like `astropy` or `scikit-learn`
-- [Official Python distribution](https://www.python.org/downloads/): good on Windows or macOS, when you like to build your environment from scratch.
+- [Official Python distribution](https://www.python.org/downloads/): good on Windows or macOS when you'd like to build your environment from scratch
 
 ### macOS
-Instead of official Python distribution I recommend to use [Homebrew](http://brew.sh) package manager, type `brew install python`
+Instead of official Python distribution I recommend to use [Homebrew](http://brew.sh) package manager, install it and type `brew install python`
 
 ### Linux
-Probably you already have Python 3, check its version before start. If you haven't use your Linus package manager to install
+Probably you already have Python 3, check its version before start. If you haven't use your package manager
 
 ### iOS
-iOS doesn't have any application to use for scientific programming. The best choice is [Pythonista](http://omz-software.com/pythonista/) paid application that can run and edit Python 3.5 code and supports `numpy` package, but doesn't support `scipy` and other useful packages.
+iOS doesn't have any application to use for scientific programming. The best choice is [Pythonista](http://omz-software.com/pythonista/) paid application that can run and edit Python 3.6 code and supports `numpy` package, but doesn't support `scipy` and other useful packages
 
 ### Android
 [PyDroid 3](https://play.google.com/store/apps/details?id=ru.iiec.pydroid3) looks good
@@ -74,7 +75,7 @@ iOS doesn't have any application to use for scientific programming. The best cho
 
 # Classes materials (2018)
 
-Classes had place in classroom 48 of Sternberg Astronomical Institute MSU at 9:00 on Wednesdays from September to December 2018. Development of the course in 2018 is supported by [BASIS foundation](https://basis-foundation.ru/en/).
+Classes had place in classroom 48 of Sternberg Astronomical Institute MSU at 9:00 on Wednesdays from September to December 2018. Records of on-line translations of the seminars are hosted [on YouTube](https://www.youtube.com/playlist?list=PLmgwC9JZdQnsPAZTVzzD5tttStuYGgskg). Development of the course in 2018 is supported by [BASIS foundation](https://basis-foundation.ru/en/).
 
 Date | Description | Materials | Links | Video (in Russian)
 ---- | ----------- | --------- | ----- | ------------------
@@ -120,6 +121,6 @@ Date | Description | Materials | Video (in Russian)
 
 # License
 
-Copyright (c) 2017, Konstantin L. Malanchev.
+Copyright (c) 2017-2018, Konstantin L. Malanchev.
 
-All program code in this repository is distributed under the terms of the MIT license. All data files are properties of their authors, see `COPYRIGHT_NOTE` files in folders with foreign data.
+All program code in this repository is distributed under the terms of the MIT license. All data files are properties of their authors, see `COPYRIGHT_NOTE` files in folders with data files
