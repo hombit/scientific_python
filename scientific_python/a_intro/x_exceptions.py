@@ -63,10 +63,8 @@ for pair in a:
         z = x + y  # TypeError if variables cannot be added
     except ValueError as e:
         count_value_errors += 1
-        assert str(e) == 'not enough values to unpack (expected 2, got 1)'
     except TypeError as e:
         count_type_errors += 1
-        assert str(e) == 'can only concatenate str (not "int") to str'
 assert count_value_errors == 1
 assert count_type_errors == 1
 
