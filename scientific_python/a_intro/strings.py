@@ -34,7 +34,10 @@ from sys import version_info
 # convenient to use quotes of the other type.
 s = 'Hello world'
 ss = "Hello world"
-assert s == ss  # assert raises AssertionError if boolean value is False
+assert s == ss
+# `assert` raises `AssertionError` if Boolean value is False, see
+# `x_exceptions.py` for details
+
 assert s[:5] == 'Hello'
 try:
     s[0] = 'h'  # str is immutable
