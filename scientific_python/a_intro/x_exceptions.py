@@ -14,8 +14,8 @@ except ZeroDivisionError:
 # `ZeroDivisionError was caught`
 
 # An exception is represented as a special object of built-in class
-# `Exception` (or its inheritor, see below). Such an object can be get using
-# `except ... as` syntax:
+# `Exception` (or its inheritor, see details below). Such an object can be
+# get using `except ... as` syntax:
 try:
     1 + '0'
 except TypeError as e:
@@ -69,3 +69,43 @@ assert count_value_errors == 1
 assert count_type_errors == 1
 
 # ## Exception inheritance hierarchy
+
+# As it was mentioned above all exception classes inherit `BaseException`
+# built-in class. The main inheritor of this class is `Exception`, which is
+# the base of almost all built-in exceptions and should be used to create
+# user-defined exceptions. See the full hierarchy of built-in exceptions on
+# https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+
+assert issubclass(Exception, BaseException)
+assert issubclass(ValueError, Exception)
+
+# Multiple `except` statements work like `if` with one or more `elif`
+# statements: only first matched exception is used, not all of them.
+# In the next example `LookupError` and its inheritors `IndexError` and
+# `KeyError` will be used.
+
+assert issubclass(IndexError, LookupError)
+
+a = []
+try:
+    x = a[0]
+except LookupError as e:
+    count_lookup_error = 1
+except IndexError as e:
+    assert False  # we cannot be here
+assert count_lookup_error == 1
+
+try:
+    x = a[0]
+except KeyError as e:
+    assert False  # not a KeyError
+except IndexError as e:
+    count_index_error = 1
+except LookupError as e:
+    assert False
+assert count_index_error == 1
+
+# ## Catch them all
+
+# It could be desired to catch all types of exceptions at once. It is
+# possible, but be aware to use it all the time.
