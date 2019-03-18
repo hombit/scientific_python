@@ -59,7 +59,7 @@ iOS doesn't have any application to use for scientific programming. The best cho
 - [PyCharm](https://www.jetbrains.com/pycharm/): a powerful Python IDE (integrated development environment). PyCharm is closed source product, but Community edition is free to use and every student and professor can ask for a [free professional version](https://www.jetbrains.com/student/)
 
 ## Dive into Python
-- [Learn Python in Y minutes](http://learnxinyminutes.com/python3/): short and deep language tutorial. This tutorial has [Russian version](https://learnxinyminutes.com/docs/ru-ru/python3-ru/)
+- [Learn Python in Y minutes](http://learnxinyminutes.com/docs/python3/): short and deep language tutorial. This tutorial has [Russian version](https://learnxinyminutes.com/docs/ru-ru/python3-ru/)
 - [Official Python tutorial](https://docs.python.org/3/tutorial/)
 - [A Byte of Python](https://python.swaroopch.com): a free handbook with initial language tutorial, [there is an unofficial but still good Russian translation](https://wombat.org.ua/AByteOfPython/toc.html)
 - [Practical Python for astronomers](https://python4astronomers.github.io)
