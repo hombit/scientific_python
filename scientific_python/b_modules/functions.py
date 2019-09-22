@@ -230,7 +230,10 @@ assert callable_with_memory('hello') == [1, 2, [3, 4, 5], 'hello']
 # functions have special signatures that indicate some of arguments to be
 # positional-only. Remember, that in interactive shell, you can see function
 # signature using built-in `help()` function or typing `?` before object name
-# in IPython. The basic example is `abs`:
+# in IPython. The basic example is `abs`.
+
+# >> In upcoming Python 3.8 it is allowed to write a function with positional
+# only arguments
 
 assert 1 == abs(-1)
 # Import standard library function `inspect.signature` that returns an object
