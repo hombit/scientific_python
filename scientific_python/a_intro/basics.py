@@ -258,4 +258,4 @@ else:
     print(10)
 # `12`
 
-# This syntax should be preferred to a usage of boolean flag.
+# This syntax should be preferred to a usage of a boolean flag.
