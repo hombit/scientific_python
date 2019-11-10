@@ -24,7 +24,7 @@ setup(
         'gui_scripts': ['plotsnake = ser.snake:plot'],
     },
     test_suite='test',
-    install_requires=['numpy>=1.13', 'scipy>=1.0', 'matplotlib>=2.0'],
+    install_requires=['numpy>=1.13', 'scipy>=1.0', 'matplotlib>=2.0,<3.0'],
     classifiers=[
         'Intended Audience :: Science/Research',
         'Intended Audience :: Education',
