@@ -2,7 +2,7 @@
 
 from __future__ import print_function, unicode_literals
 
-import ser
+from ser.__main__ import main
 
-print('Package {} is imported, version is {}'.format(ser.name,
-                                                     ser.version))
+
+main()

@@ -16,11 +16,15 @@ setup(
     url='http://phys.msu.ru',
     license='MIT',
     packages=find_packages(),
-    # If all your code are in a module, use py_modules instead packages:
+    # If all your code are in a module, use py_modules instead of packages:
     # py_modules=['ser'],
     scripts=['bin/serpens'],
+    entry_points={
+        'console_scripts': ['issnake = ser.snake:main'],
+        'gui_scripts': ['plotsnake = ser.snake:plot'],
+    },
     test_suite='test',
-    install_requires=['numpy>=1.13', 'scipy>=1.0'],
+    install_requires=['numpy>=1.13', 'scipy>=1.0', 'matplotlib>=2.0'],
     classifiers=[
         'Intended Audience :: Science/Research',
         'Intended Audience :: Education',
