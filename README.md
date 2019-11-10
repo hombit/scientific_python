@@ -59,7 +59,7 @@ iOS doesn't have any application to use for scientific programming. The best cho
 - [PyCharm](https://www.jetbrains.com/pycharm/): a powerful Python IDE (integrated development environment). PyCharm is closed source product, but Community edition is free to use and every student and professor can ask for a [free professional version](https://www.jetbrains.com/student/)
 
 ## Dive into Python
-- [Learn Python in Y minutes](http://learnxinyminutes.com/python3/): short and deep language tutorial. This tutorial has [Russian version](https://learnxinyminutes.com/docs/ru-ru/python3-ru/)
+- [Learn Python in Y minutes](http://learnxinyminutes.com/docs/python3/): short and deep language tutorial. This tutorial has [Russian version](https://learnxinyminutes.com/docs/ru-ru/python3-ru/)
 - [Official Python tutorial](https://docs.python.org/3/tutorial/)
 - [A Byte of Python](https://python.swaroopch.com): a free handbook with initial language tutorial, [there is an unofficial but still good Russian translation](https://wombat.org.ua/AByteOfPython/toc.html)
 - [Practical Python for astronomers](https://python4astronomers.github.io)
@@ -72,6 +72,15 @@ iOS doesn't have any application to use for scientific programming. The best cho
 - [Zen of Python](http://pep20.prg) or just run `import this` in Python
 - [Official documentation](http://docs.python.org)
 - [Python code style guide](http://pep8.org)
+
+## Git
+Use some version control system. `Git` is a good choice, see some tutorials:
+- [GitHowTo](https://githowto.com/) — good course on command line Git, [Russian version](https://githowto.com/ru/)
+- [Git Book](https://git-scm.com/book/en/v2) — official online Git handbook, [Russian version](https://git-scm.com/book/ru/v2)
+- [GitHub Tutorials](https://guides.github.com) — official tutorial of <https://github.com>
+- [Bitbucket tutorials](https://www.atlassian.com/git/tutorials) — official tutorial of <https://bitbucket.com>, another public Git hoster
+- [Version Control with Git](https://www.coursera.org/learn/version-control-with-git) — Coursera course by Atlassian (Bitbucket owner)
+- [A Quick Introduction to Version Control with Git and GitHub](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668) — paper in Computational Biology
 
 # Classes materials (2018)
 
