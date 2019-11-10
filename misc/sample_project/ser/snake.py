@@ -42,4 +42,3 @@ def plot():
     plt.plot(x, [math.sin(a) for a in x])
     plt.show()
     plt.close()
-

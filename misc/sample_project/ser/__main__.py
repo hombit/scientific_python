@@ -6,5 +6,6 @@ import ser
 def main():
     print('Ser version is {}'.format(ser.version))
 
+
 if __name__ == '__main__':
     main()
