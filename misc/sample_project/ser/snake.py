@@ -7,6 +7,30 @@ __all__ = ('is_snake',)
 
 
 def is_snake(word):
+    """Checks if an animal is a snake
+
+    Parameters
+    ----------
+    word : str
+        Animal name
+
+    Returns
+    -------
+    bool
+
+    Example
+    -------
+    Check if a bear is a snake
+
+    >>> from ser.snake import is_snake
+    >>>
+    >>> if is_snake('bear'):
+    ...     print('Shhhh')
+    ... else:
+    ...     print('Argh')
+    Argh
+
+    """
     if not word.isalpha():
         raise ValueError("String '{}' is not a word")
     if word.lower() == 'python':
