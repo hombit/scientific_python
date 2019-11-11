@@ -44,10 +44,12 @@ def main():
     package_dir = os.path.join(dir_name, 'scientific_python')
     book_dir = os.path.join(dir_name, 'misc/book')
     sample_proj_dir = os.path.join(dir_name, 'misc/sample_project/ser')
+    sample_proj_test_dir = os.path.join(dir_name, 'misc/sample_project/test')
 
     fpaths = [os.path.join(script_dir, script) for script in SCRIPTS]
     fpaths += package_files(package_dir)
     fpaths += package_files(sample_proj_dir)
+    fpaths += package_files(sample_proj_test_dir)
     fpaths += glob.glob(os.path.join(book_dir, '*.py'))
     print(fpaths)
 
