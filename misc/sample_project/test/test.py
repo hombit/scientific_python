@@ -2,7 +2,9 @@
 
 from __future__ import unicode_literals
 
+import doctest
 import unittest
+
 import ser
 
 
@@ -21,7 +23,7 @@ class IsSnakeTestCase(unittest.TestCase):
     def test_ru(self):
         self.assertTrue(ser.is_snake('питон'),
                         msg='"питон" is a Russian name for python')
-    
+
     def test_upper_case(self):
         self.assertTrue(ser.is_snake('Python'),
                         msg='Titled "Python" doesn\'t identified')
@@ -34,3 +36,8 @@ class IsSnakeTestCase(unittest.TestCase):
         msg = 'String with spaces should cause exception'
         with self.assertRaises(ValueError, msg=msg):
             ser.is_snake('Python is a snake')
+
+
+def load_tests(loader, tests, ignore):
+    tests.addTests(doctest.DocTestSuite(ser.snake))
+    return tests
