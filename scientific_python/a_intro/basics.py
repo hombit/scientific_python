@@ -75,8 +75,8 @@ print(1 // 2)  # 0
 print(4.0 // 2)  # 2.0
 print(1.5 // 0.4)  # 3.0
 
-# Operator `%` returns fractional part, returned value type is determined from
-# the same laws as for `//`.
+# Operator `%` returns remainder, returned value type is determined from the
+# same laws as for `//`.
 print(1 % 2)  # 1
 print(1.5 % 0.4)  # 0.29999999999999993
 
