@@ -6,6 +6,7 @@ services:
       - "5000:5000"
     volumes:
       - work:/home/jovyan/work
+      - /srv/pgsql/tmp:/data:ro
     networks:
       - jupyter
     restart: always  

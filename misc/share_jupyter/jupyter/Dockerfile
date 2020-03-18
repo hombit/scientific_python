@@ -4,7 +4,7 @@ FROM jupyter/minimal-notebook
 # Install required Python packages
 RUN conda install --yes astropy astroquery matplotlib numpy scipy pandas \
     lmfit scikit-learn pillow scikit-image requests photutils cython \
-    numba keras tensorflow requests beautifulsoup4 flask
+    numba requests beautifulsoup4 flask
 
 # Install TeX and ffmpeg for matplotlib
 USER root
