@@ -36,7 +36,7 @@ This repository has a structure of [a Python package](https://packaging.python.o
 
 Remember to use Python 3, 3.6 and later is good enough in 2018. You can check python version typing in console `python3 --version` or `import sys; print(sys.version)` in Python itself
 
-### All platforms
+### All desktop platforms
 - [Anaconda Python distribution](https://www.anaconda.com/download/) is a good choice for scientific Python programming on every platform. It includes a lot of pre-compiled numerical and scientific packages and `conda` package manager where you can find even more packages, like `astropy` or `scikit-learn`
 - [Official Python distribution](https://www.python.org/downloads/): good on Windows or macOS when you'd like to build your environment from scratch
 
@@ -53,10 +53,12 @@ iOS doesn't have any application to use for scientific programming. The best cho
 [PyDroid 3](https://play.google.com/store/apps/details?id=ru.iiec.pydroid3) looks good
 
 ## Source code editors for Python
+- [Spyder](https://www.spyder-ide.org): the scientific Python development environment, if you have Anaconda, you probably have Spyder
+- [Visual Studio Code](https://code.visualstudio.com) (do not be confused with Visual Studio, they are two different products): a powerful source code editor. GitHub has integrated web-based Visual Studio Code called [GitHub Codespaces](https://github.com/features/codespaces/)
 - [IDLE](https://docs.python.org/3/library/idle.html): a simple Python source code editor. It is a part of Python standard library, so if you have Python, you probably have IDLE
-- [Visual Studio Code](https://code.visualstudio.com) (do not be confused with Visual Studio, they are two different products): a powerful source code editor
-- [Spyder](https://www.spyder-ide.org): the scientific Python development environment
-- [PyCharm](https://www.jetbrains.com/pycharm/): a powerful Python IDE (integrated development environment). PyCharm is closed source product, but Community edition is free to use and every student and professor can ask for a [free professional version](https://www.jetbrains.com/student/)
+- [PyCharm](https://www.jetbrains.com/pycharm/): a powerful Python IDE (integrated development environment). PyCharm is closed source product, but Community edition is free to use and every student or professor can ask for a [free professional version](https://www.jetbrains.com/student/)
+- [Jupyter Notebook](https://jupyter.org): not an editor in the usual sense, but powerful web-based tool for running Python (among with other language) code for data analysis. You can run Jupyter server on your own hardware or try it on [Azure Notebooks](https://notebooks.azure.com/) or [Google Colab](https://colab.research.google.com/)
+- Almost all popular interlanguage code editors supports Python
 
 ## Dive into Python
 - [Learn Python in Y minutes](http://learnxinyminutes.com/docs/python3/): short and deep language tutorial. This tutorial has [Russian version](https://learnxinyminutes.com/docs/ru-ru/python3-ru/)
