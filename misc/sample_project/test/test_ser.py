@@ -38,6 +38,5 @@ class IsSnakeTestCase(unittest.TestCase):
             ser.is_snake('Python is a snake')
 
 
-def load_tests(loader, tests, ignore):
-    tests.addTests(doctest.DocTestSuite(ser.snake))
-    return tests
+if __name__ == '__main__':
+    unittest.main()
