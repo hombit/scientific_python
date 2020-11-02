@@ -1,0 +1,1 @@
+int autoreg(double a, size_t n, double*);
