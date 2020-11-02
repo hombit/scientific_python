@@ -10,10 +10,10 @@ matrix:
       dist: xenial
       sudo: true
 install:
-  - pip install -r requirements.txt
+  - pip install -r requirements.txx
   - python setup.py install
 script:
   - sci_py_import_all
   - python setup.py test
   - sci_py_test_style .
-  - python ./misc/sample_project/setup.py test
+  - python -m pytest ./misc/sample_project/test

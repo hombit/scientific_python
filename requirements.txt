@@ -3,3 +3,4 @@ scipy>=1.0.0
 cython>=0.26
 numba>=0.35
 pycodestyle>=2.0
+pytest>=6.0
